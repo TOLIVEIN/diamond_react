@@ -9,14 +9,14 @@ import Footer from './components/Footer/Footer';
 const App: React.FC = () => {
   return (
     <div className="App">
+    <Layout>
+      <Header></Header>
       <Layout>
         <Sider></Sider>
-        <Layout>
-          <Header></Header>
-          <Main></Main>
-          <Footer></Footer>
-        </Layout>
+        <Main></Main>
       </Layout>
+      <Footer></Footer>
+    </Layout>
       {/* <header className="App-header">
         <p>
           Init
