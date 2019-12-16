@@ -1,0 +1,17 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+  } */
+
+
+.card-container {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+.card {
+    border-radius: 25px;
+    box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+  }

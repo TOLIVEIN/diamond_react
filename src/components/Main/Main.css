@@ -1,0 +1,7 @@
+.main-container {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: red;
+  }

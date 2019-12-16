@@ -4,7 +4,7 @@ const Header: FC = () => {
 
     return (
         <header>
-            <h1>S · C · Q</h1>
+            {/* <h1>S · C · Q</h1> */}
         </header>
     )
 
