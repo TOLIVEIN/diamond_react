@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import './Card.css';
 
-const Card: FC<{head: string[], body: string, foot?: string}> = (props: any) => {
+const Card: FC<{head: string[], body: string[] | string, foot?: string}> = (props: any) => {
     return (
       <div className="card-container">
         <div className="card">
@@ -12,7 +12,8 @@ const Card: FC<{head: string[], body: string, foot?: string}> = (props: any) => 
           </div>
 
           <div className="card-body">
-            <blockquote>{props.body}</blockquote>
+              {props.body instanceof Array ? props.body.map((b: any) => <blockquote key={b}>{b}</blockquote>) : <blockquote>{props.body}</blockquote>}
+            {/* <blockquote>{props.body}</blockquote> */}
           </div>
 
           {props.foot ? (
