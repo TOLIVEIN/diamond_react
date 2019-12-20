@@ -3,31 +3,39 @@ import Card from "../Card/Card";
 import './Main.css';
 // import { fromEvent } from 'rxjs';
 import axios from 'axios';
+import { Shi } from '../../model/data';
 
 const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
+    const initialShi: Shi[] = [{ id : '', title : '', author : '', paragraphs : ''}] 
     const [click, setClick] = useState(initial);
-    const [showData, setShowData] = useState(false)
+    const [showData, setShowData] = useState(false);
+    const [data, setData] = useState(initialShi);
     // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
     // const getShi = (url: string) => {
 
     // }
 
+    // let shiList: Shi[] = [];
 
-    function getShi(url: string): any {
+    function getShi(url: string) {
         axios.get(url).then((response) => {
-            // 在这儿实现 setState
-            console.log(response)
-            return response.data
+            console.log(response.data.content)
+
+            setData(response.data.content)
+            // shiList = response.data.content
+            // return response.data.content
         }).catch((error) => {
-            // 处理请求出错的情况
             return 'fail'
         });
+
+        // return shiList;
     }
     // const data: any = getShi('http://localhost:8080/shi/author/李白')
     // getShi('http://localhost:8080/shi/author/李白')
+    // let shiList: Shi[] = [];
 
-    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return(
         <div className="main-container">
             <div className="test-button">
@@ -37,12 +45,16 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
             </div>
 
             <button className="getData-button" onClick={ () => {
-                getShi('http://localhost:8080/shi/author/李白');
+                if (!showData) {
+                    getShi('http://localhost:8080/shi/author/李白');
+                    console.log('data: ', data)
+                }
                 setShowData(!showData);
+                console.log('...')
             }
             }>Get Data</button>
 
-            { showData ? cards.map((card) => <Card key={card} data={card}></Card>) :<></> }
+            { showData ? data.map((shi) => <Card key={shi.id} head={[shi.title, shi.author]} body={shi.paragraphs}></Card>) :<></> }
             {/* // { cards.map((card) => {
             //     return (
             //     // <Card key={card}>{getShi('http://localhost:8080/')}</Card>
