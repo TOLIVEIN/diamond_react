@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import './Card.css';
 
-const Card: FC = () => {
+const Card: FC<{data: any}> = (props: any) => {
     return (
         <div className="card-container">
             <div className="card">
@@ -12,9 +12,9 @@ const Card: FC = () => {
                 </div>
 
                 <div className="card-body">
-                    <p>
-                        Card Body
-                    </p>
+                    <blockquote>
+                        {props.data}
+                    </blockquote>
                 </div>
 
                 <div className="card-footer">
