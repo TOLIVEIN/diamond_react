@@ -3,15 +3,16 @@ import Card from "../Card/Card";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
-import { Shi } from "../../model/data";
+import { initialData } from "../../model/data";
+// import { initialData } from '../../model/data';
 
 const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
-  const initialShi: Shi[] = [
-    { id: "", title: "", author: "", paragraphs: [""] }
-  ];
+  // const initialShi: Shi[] = [
+  //   { id: "", title: "", author: "", paragraphs: [""] }
+  // ];
   const [click, setClick] = useState(initial);
   const [showData, setShowData] = useState(false);
-  const [data, setData] = useState(initialShi);
+  const [data, setData] = useState(initialData);
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
   // const getShi = (url: string) => {
@@ -24,9 +25,9 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
     axios
       .get(url)
       .then(response => {
-        console.log(response.data.content);
+        console.log(response.data);
 
-        setData(response.data.content);
+        setData(response.data);
         // shiList = response.data.content
         // return response.data.content
       })
@@ -77,7 +78,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
       </button>
 
       {showData ? (
-        data.map(shi => (
+        data.content.map(shi => (
           <Card
             key={shi.id}
             head={[shi.title, shi.author]}
@@ -85,7 +86,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
           ></Card>
         ))
       ) : (
-        <></>
+        null
       )}
     </div>
   );
