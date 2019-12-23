@@ -27,9 +27,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
   }
   // const data: any = getShi('http://localhost:8080/shi/author/李白')
   // getShi('http://localhost:8080/shi/author/李白')
-  // let shiList: Shi[] = [];
 
-  // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   return (
     <div className="main-container">
       <div className="test-button">
