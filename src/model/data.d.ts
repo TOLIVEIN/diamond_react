@@ -34,17 +34,3 @@ export interface Sort {
     unsorted: boolean;
     empty: boolean;
 }
-
-export const initialData: Data<any> = {
-    content: null,
-    pageable: null,
-    totalPages: null,
-    totalElements: null,
-    last: null,
-    size: null,
-    number: null,
-    sort: null,
-    numberOfElements: null,
-    first: null,
-    empty: null
-} 

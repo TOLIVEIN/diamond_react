@@ -3,39 +3,27 @@ import Card from "../Card/Card";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
-import { initialData } from "../../model/data";
-// import { initialData } from '../../model/data';
+import { initialShiData } from "../../model/data.model";
 
 const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
-  // const initialShi: Shi[] = [
-  //   { id: "", title: "", author: "", paragraphs: [""] }
-  // ];
+
   const [click, setClick] = useState(initial);
   const [showData, setShowData] = useState(false);
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(initialShiData);
+
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
-
-  // const getShi = (url: string) => {
-
-  // }
-
-  // let shiList: Shi[] = [];
 
   function getShi(url: string) {
     axios
       .get(url)
       .then(response => {
         console.log(response.data);
-
         setData(response.data);
-        // shiList = response.data.content
-        // return response.data.content
       })
       .catch(error => {
         return "fail";
       });
 
-    // return shiList;
   }
   // const data: any = getShi('http://localhost:8080/shi/author/李白')
   // getShi('http://localhost:8080/shi/author/李白')
