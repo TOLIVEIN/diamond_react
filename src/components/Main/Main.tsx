@@ -36,7 +36,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         <label>{click}</label>
       </div>
 
-      {/* {!showData ? (
+      {!showData ? (
         <button
           className="getData-button"
           onClick={() => {
@@ -49,8 +49,8 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         >
           Get Data
         </button>
-      ) : null} */}
-      <button
+      ) : null}
+      {/* <button
         className="getData-button"
         onClick={() => {
           if (!showData) {
@@ -61,7 +61,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         }}
       >
         Get Data
-      </button>
+      </button> */}
 
       {showData ? (
         data.content.map(shi => (
