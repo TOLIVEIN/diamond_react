@@ -1,15 +1,16 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, createRef } from "react";
 import Card from "../Card/Card";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
 import { initialShiData } from "../../model/data.model";
+import ScrollLoad from "../ScrollLoad/ScrollLoad";
 
-const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
-
-  const [click, setClick] = useState(initial);
+const Main: FC<{ setVisible?: any, initial?: number}> = props => {
+  const [click, setClick] = useState(0);
   const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShiData);
+
 
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
@@ -23,7 +24,6 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
       .catch(error => {
         return "fail";
       });
-
   }
   // const data: any = getShi('http://localhost:8080/shi/author/李白')
   // getShi('http://localhost:8080/shi/author/李白')
@@ -35,8 +35,74 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         <button onClick={() => setClick(click - 1)}>-</button>
         <label>{click}</label>
       </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
 
-      {!showData ? (
+      <ScrollLoad></ScrollLoad>
+
+      {/* {!showData ? (
         <button
           className="getData-button"
           onClick={() => {
@@ -49,7 +115,8 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         >
           Get Data
         </button>
-      ) : null}
+      ) : null} */}
+
       {/* <button
         className="getData-button"
         onClick={() => {
@@ -63,17 +130,16 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
         Get Data
       </button> */}
 
-      {showData ? (
-        data.content.map(shi => (
-          <Card
-            key={shi.id}
-            head={[shi.title, shi.author]}
-            body={shi.paragraphs}
-          ></Card>
-        ))
-      ) : (
-        null
-      )}
+      {/* {showData
+        ? data.content.map(shi => (
+            <Card
+              key={shi.id}
+              head={[shi.title, shi.author]}
+              body={shi.paragraphs}
+            ></Card>
+          ))
+        : null} */}
+      {/* {showData ? props.setVisible(true) : null} */}
     </div>
   );
 };
