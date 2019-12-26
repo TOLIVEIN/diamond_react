@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import "./Footer.css";
+import ScrollLoad from "../ScrollLoad/ScrollLoad";
 
 const Footer: FC<{ visible: boolean }> = props => {
 
@@ -18,6 +19,7 @@ const Footer: FC<{ visible: boolean }> = props => {
           <br/>
           <br/>
           <br/>
+          <ScrollLoad text={"foot"}></ScrollLoad>
         </div>
       ) : null}
     </>

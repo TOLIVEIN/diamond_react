@@ -5,8 +5,7 @@ import "./Main.css";
 import axios from "axios";
 import { initialShiData } from "../../model/data.model";
 
-const Main: FC<{ setVisible?: any, initial?: number }> = (props) => {
-
+const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
   const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShiData);
@@ -23,7 +22,6 @@ const Main: FC<{ setVisible?: any, initial?: number }> = (props) => {
       .catch(error => {
         return "fail";
       });
-
   }
   // const data: any = getShi('http://localhost:8080/shi/author/李白')
   // getShi('http://localhost:8080/shi/author/李白')
@@ -35,7 +33,119 @@ const Main: FC<{ setVisible?: any, initial?: number }> = (props) => {
         <button onClick={() => setClick(click - 1)}>-</button>
         <label>{click}</label>
       </div>
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br /> <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       {!showData ? (
         <button
           className="getData-button"
@@ -63,18 +173,15 @@ const Main: FC<{ setVisible?: any, initial?: number }> = (props) => {
       >
         Get Data
       </button> */}
-
-      {showData ? (
-        data.content.map(shi => (
-          <Card
-            key={shi.id}
-            head={[shi.title, shi.author]}
-            body={shi.paragraphs}
-          ></Card>
-        ))
-      ) : (
-        null
-      )}
+      {showData
+        ? data.content.map(shi => (
+            <Card
+              key={shi.id}
+              head={[shi.title, shi.author]}
+              body={shi.paragraphs}
+            ></Card>
+          ))
+        : null}
     </div>
   );
 };

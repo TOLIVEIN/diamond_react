@@ -6,7 +6,7 @@ import Sider from './components/Sider/Sider';
 import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className="App">
