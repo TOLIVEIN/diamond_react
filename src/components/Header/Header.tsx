@@ -6,7 +6,8 @@ const Header: FC = () => {
     return (
         <header>
             {/* <h1>S · C · Q</h1> */}
-            <ScrollLoad text={'aaaa'}></ScrollLoad>
+            <ScrollLoad></ScrollLoad>
+            {/* <ScrollLoad text={'aaaa'}></ScrollLoad> */}
         </header>
     )
 

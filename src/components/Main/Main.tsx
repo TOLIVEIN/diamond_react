@@ -5,9 +5,9 @@ import "./Main.css";
 import axios from "axios";
 import { initialShiData } from "../../model/data.model";
 
-const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
+const Main: FC<{ setVisible?: any, initial?: number }> = (props) => {
 
-  const [click, setClick] = useState(initial);
+  const [click, setClick] = useState(0);
   const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShiData);
 
@@ -45,6 +45,7 @@ const Main: FC<{ initial?: number }> = ({ initial = 0 }) => {
               console.log("data: ", data);
             }
             setShowData(!showData);
+            props.setVisible(true);
           }}
         >
           Get Data
