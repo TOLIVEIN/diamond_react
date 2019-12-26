@@ -40,7 +40,7 @@ const ScrollLoad: FC<{ text?: any }> = ({text}) => {
     });
 
 
-    observer.observe(ref);
+    observer.observe(ref.current);
     getShi("http://localhost:8080/shi/author/李白");
     console.log("data: ", data);
     return () => {
