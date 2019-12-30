@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import "./Footer.css";
-import ScrollLoad from "../ScrollLoad/ScrollLoad";
+// import ScrollLoad from "../ScrollLoad/ScrollLoad";
 
-const Footer: FC<{ visible: boolean }> = props => {
+const Footer: FC<{ ref?: any, visible: boolean }> = props => {
+
+  // const footerRef: any = createRef();
 
   return (
     <>
@@ -11,17 +13,15 @@ const Footer: FC<{ visible: boolean }> = props => {
           <span>
             ---------------------------到底了----------------------------
           </span>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <ScrollLoad text={"foot"}></ScrollLoad>
+          {/* <ScrollLoad passRef={footerRef} text={"foot"}></ScrollLoad> */}
         </div>
       ) : null}
+      {/* {Array.from(
+        {length: 100},
+        (text, index) => (
+          <ScrollLoad key={index} passRef={footerRef} text={`第${index+1}个元素`}></ScrollLoad>
+        )
+      )} */}
     </>
   );
 };

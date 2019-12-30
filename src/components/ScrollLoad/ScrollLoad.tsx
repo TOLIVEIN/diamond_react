@@ -1,6 +1,7 @@
-import React, { useState, createRef, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, createRef } from "react";
+import './ScrollLoad.css';
 
-const ScrollLoad: FC<{ text?: any }> = ({ text }) => {
+const ScrollLoad: FC<{ passRef: any, text?: any }> = (props) => {
   const [loading, setLoading] = useState(true);
   const ref: any = createRef();
   useEffect(() => {
@@ -12,6 +13,8 @@ const ScrollLoad: FC<{ text?: any }> = ({ text }) => {
           observer.unobserve(entry.target);
         }
       });
+    }, {
+      root: props.passRef.current,
     });
     observer.observe(ref.current);
     return () => {
@@ -20,64 +23,8 @@ const ScrollLoad: FC<{ text?: any }> = ({ text }) => {
   });
 
   return (
-    <div className="scroll-item" ref={ref}>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-      {loading ? "Loading..." : text}
+    <div className="scroll-item" ref={ref} id="test-text">
+      {loading ? "Loading..." : props.text}
     </div>
   );
 };

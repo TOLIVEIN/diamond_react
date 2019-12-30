@@ -1,9 +1,10 @@
 import React, { FC, useState } from "react";
-import Card from "../Card/Card";
+// import Card from "../Card/Card";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
 import { initialShiData } from "../../model/data.model";
+import SLidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
@@ -33,126 +34,14 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
         <button onClick={() => setClick(click - 1)}>-</button>
         <label>{click}</label>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       {!showData ? (
         <button
           className="getData-button"
           onClick={() => {
             if (!showData) {
               getShi("http://localhost:8080/shi/author/李白");
-              console.log("data: ", data);
+              // console.log("data: ", data);
             }
             setShowData(!showData);
             props.setVisible(true);
@@ -173,7 +62,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
       >
         Get Data
       </button> */}
-      {showData
+      {/* {showData
         ? data.content.map(shi => (
             <Card
               key={shi.id}
@@ -181,7 +70,14 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
               body={shi.paragraphs}
             ></Card>
           ))
-        : null}
+        : null} */}
+
+      {showData ? (
+        <SLidingWindowScrollHook
+          list={data.content}
+          height={195}
+        ></SLidingWindowScrollHook>
+      ) : null}
     </div>
   );
 };
