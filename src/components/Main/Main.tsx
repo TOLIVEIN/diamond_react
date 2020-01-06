@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 // import Card from "../Card/Card";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
@@ -8,10 +8,18 @@ import SLidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
-  const [showData, setShowData] = useState(false);
+  // const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShiData);
 
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
+
+
+  useEffect(() => {
+    getShi("http://localhost:8080/shi/author/李白");
+  }, []
+  )
+
+
 
   function getShi(url: string) {
     axios
@@ -35,7 +43,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
         <label>{click}</label>
       </div>
 
-      {!showData ? (
+      {/* {!showData ? (
         <button
           className="getData-button"
           onClick={() => {
@@ -49,7 +57,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
         >
           Get Data
         </button>
-      ) : null}
+      ) : null} */}
       {/* <button
         className="getData-button"
         onClick={() => {
@@ -72,7 +80,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
           ))
         : null} */}
 
-      {showData ? (
+      {data.size !== 0 ? (
         <SLidingWindowScrollHook
           list={data.content}
           height={195}
