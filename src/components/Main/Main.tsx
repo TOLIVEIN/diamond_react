@@ -3,19 +3,20 @@ import React, { FC, useState, useEffect } from "react";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
-import { initialPage, initialShi } from '../../model/data.model';
+import { initialShi } from '../../model/data.model';
 import SLidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
   // const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShi);
-  const [page, setPage] = useState(initialPage);
+  const [page, setPage] = useState(0);
   // const [sort, setSort] = useState(initialSort);
 
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
   useEffect(() => {
+    console.log('main effect......, page: ', page)
     getShi("http://localhost:8080/shi/author/李白");
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
@@ -24,7 +25,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
     axios
       .get(url, {
         params: {
-          page: page.pageNumber
+          page: page
         }
       })
       // .post(url, {
@@ -37,6 +38,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
           data.pop();
         }
         setData(data.concat(response.data.content));
+        console.log('data: ', data)
       })
       .catch(error => {
         return "fail";

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, FC, useRef } from "react";
 // import Card from "../components/Card/Card";
-import { Shi, Page } from '../model/data';
+import { Shi } from '../model/data';
 import './SlidingWindowScrollHook.css';
 
 
 // const THRESHOLD = 15;
-const SlidingWindowScrollHook: FC<{data: any, height: number, page: Page, setPage: any}> = (props) => {
+const SlidingWindowScrollHook: FC<{data: any, height: number, page: number, setPage: any}> = (props) => {
     // const [start, setStart] = useState(0);
     // const [end, setEnd] = useState(THRESHOLD);
     const [observer, setObserver] = useState();
@@ -23,7 +23,7 @@ const SlidingWindowScrollHook: FC<{data: any, height: number, page: Page, setPag
 
     useEffect(() => {
         // setLastIndex(updatedList.length - 1);
-        console.log('useEffect......', props.data);
+        console.log('sliding effect......, data: ', props.data);
         initiateScrollObserver();
         return () => {
             resetObservation();
@@ -56,7 +56,7 @@ const SlidingWindowScrollHook: FC<{data: any, height: number, page: Page, setPag
             // console.log('entry item id:', entry.target.id);
             if (entry.isIntersecting && entry.target.id === 'bottom') {
                 console.log('bottom enter.');
-                props.setPage(props.page.pageNumber + 1);
+                props.setPage(props.page + 1);
                 // const maxStartIndex = listLength - 1 - THRESHOLD;
                 // const maxEndIndex = listLength - 1;
                 // const newEnd = (end + 10) <= maxEndIndex ? end + 10 : maxEndIndex;
