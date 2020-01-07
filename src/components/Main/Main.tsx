@@ -3,27 +3,32 @@ import React, { FC, useState, useEffect } from "react";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
-import { initialShiData } from "../../model/data.model";
+import { initialShiData } from '../../model/data.model';
 import SLidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
   // const [showData, setShowData] = useState(false);
   const [data, setData] = useState(initialShiData);
+  const [pageNumber, setPageNumber] = useState(0);
 
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
-
   useEffect(() => {
-    getShi("http://localhost:8080/shi/author/李白");
-  }, []
-  )
-
-
+    getShi("http://localhost:8080/shi");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   function getShi(url: string) {
     axios
-      .get(url)
+      .get(url, {
+        params: {
+          page: pageNumber
+        }
+      })
+      // .post(url, {
+      //   pageNumber: pageNumber,
+      // })
       .then(response => {
         console.log(response.data);
         setData(response.data);
@@ -58,18 +63,19 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
           Get Data
         </button>
       ) : null} */}
-      {/* <button
+      <button
         className="getData-button"
         onClick={() => {
-          if (!showData) {
-            getShi("http://localhost:8080/shi/author/李白");
-            console.log("data: ", data);
-          }
-          setShowData(!showData);
+          setPageNumber(pageNumber + 1)
+          // if (!showData) {
+          //   getShi("http://localhost:8080/shi");
+          //   console.log("data: ", data);
+          // }
+          // setShowData(!showData);
         }}
       >
         Get Data
-      </button> */}
+      </button>
       {/* {showData
         ? data.content.map(shi => (
             <Card

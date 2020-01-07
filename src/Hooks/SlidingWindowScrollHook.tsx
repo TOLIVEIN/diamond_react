@@ -28,7 +28,7 @@ const SLidingWindowScrollHook: FC<{list: any, height: number}> = (props) => {
             resetObservation();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [start, end])
+    }, [start, end, props.list])
 
     const initiateScrollObserver = () => {
         const options = {
@@ -52,7 +52,7 @@ const SLidingWindowScrollHook: FC<{list: any, height: number}> = (props) => {
     const callback = (entries: any[], observer: any) => {
         entries.forEach((entry: any, index: any) => {
             const listLength = props.list.length;
-            console.log('entry item id:', entry.target.id);
+            // console.log('entry item id:', entry.target.id);
             if (entry.isIntersecting && entry.target.id === 'bottom') {
                 console.log('bottom enter.');
                 const maxStartIndex = listLength - 1 - THRESHOLD;
@@ -98,7 +98,7 @@ const SLidingWindowScrollHook: FC<{list: any, height: number}> = (props) => {
                 const top = (props.height * (index + start)) + 'px';
                 const refVal = getReference(index, index === lastIndex);
                 const id = index === 0 ? 'top' : (index === lastIndex ? 'bottom' : '');
-                console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
+                // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
                 return (
                     // props.list.map((shi: Shi) => (
 
