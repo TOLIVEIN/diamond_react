@@ -3,27 +3,28 @@ import React, { FC, useState, useEffect } from "react";
 import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
-import { initialShiData } from '../../model/data.model';
+import { initialPage, initialShi } from '../../model/data.model';
 import SLidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
   // const [showData, setShowData] = useState(false);
-  const [data, setData] = useState(initialShiData);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [data, setData] = useState(initialShi);
+  const [page, setPage] = useState(initialPage);
+  // const [sort, setSort] = useState(initialSort);
 
   // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
   useEffect(() => {
-    getShi("http://localhost:8080/shi");
+    getShi("http://localhost:8080/shi/author/李白");
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
+  }, [page]);
 
   function getShi(url: string) {
     axios
       .get(url, {
         params: {
-          page: pageNumber
+          page: page.pageNumber
         }
       })
       // .post(url, {
@@ -31,7 +32,11 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
       // })
       .then(response => {
         console.log(response.data);
-        setData(response.data);
+        setPage(response.data.pageable.pageNumber)
+        if (data === initialShi) {
+          data.pop();
+        }
+        setData(data.concat(response.data.content));
       })
       .catch(error => {
         return "fail";
@@ -63,7 +68,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
           Get Data
         </button>
       ) : null} */}
-      <button
+      {/* <button
         className="getData-button"
         onClick={() => {
           setPageNumber(pageNumber + 1)
@@ -75,7 +80,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
         }}
       >
         Get Data
-      </button>
+      </button> */}
       {/* {showData
         ? data.content.map(shi => (
             <Card
@@ -86,12 +91,14 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
           ))
         : null} */}
 
-      {data.size !== 0 ? (
+      {data.length === 1 && data[0].id === '' ? null : (
         <SLidingWindowScrollHook
-          list={data.content}
+          data={data}
           height={195}
+          page={page}
+          setPage={setPage}
         ></SLidingWindowScrollHook>
-      ) : null}
+      )}
     </div>
   );
 };
