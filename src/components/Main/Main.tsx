@@ -4,7 +4,7 @@ import "./Main.css";
 // import { fromEvent } from 'rxjs';
 import axios from "axios";
 import { initialShi } from '../../model/data.model';
-import SlidingWindowScrollHook from "../../Hooks/SlidingWindowScrollHook";
+import SlidingWindowScroll from "../SlidingWindowScroll/SlidingWindowScroll";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = props => {
   const [click, setClick] = useState(0);
@@ -94,12 +94,12 @@ const Main: FC<{ setVisible?: any; initial?: number }> = props => {
         : null} */}
 
       {data.length === 1 && data[0].id === '' ? null : (
-        <SlidingWindowScrollHook
+        <SlidingWindowScroll
           data={data}
           height={195}
           page={page}
           setPage={setPage}
-        ></SlidingWindowScrollHook>
+        ></SlidingWindowScroll>
       )}
     </div>
   );

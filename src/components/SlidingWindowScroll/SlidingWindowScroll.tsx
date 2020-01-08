@@ -1,12 +1,12 @@
 import React, { useState, useEffect, FC, useRef } from "react";
 // import Card from "../components/Card/Card";
-import { Shi } from '../model/data';
-import './SlidingWindowScrollHook.css';
-import Card from "../components/Card/Card";
+import { Shi } from '../../model/data';
+import './SlidingWindowScroll.css';
+import Card from "../Card/Card";
 
 
 // const THRESHOLD = 15;
-const SlidingWindowScrollHook: FC<{data: any, height: number, page: number, setPage: any}> = (props) => {
+const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage: any}> = (props) => {
     // const [start, setStart] = useState(0);
     // const [end, setEnd] = useState(THRESHOLD);
     const [observer, setObserver] = useState();
@@ -121,4 +121,4 @@ const SlidingWindowScrollHook: FC<{data: any, height: number, page: number, setP
     )
 }
 
-export default SlidingWindowScrollHook;
+export default SlidingWindowScroll;
