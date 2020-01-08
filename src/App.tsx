@@ -10,10 +10,20 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Header></Header>
-        <Sider></Sider>
-        <Main setVisible={ setVisible }></Main>
-      <Footer visible={ visible }></Footer>
+      <header>
+        <Header></Header>
+      </header>
+      <div className="content">
+        <aside>
+          <Sider></Sider>
+        </aside>
+        <article>
+          <Main setVisible={ setVisible }></Main>
+        </article>
+      </div>
+      <footer>
+        <Footer visible={ visible }></Footer>
+      </footer>
     </div>
   );
 }

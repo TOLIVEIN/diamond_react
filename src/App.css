@@ -1,6 +1,24 @@
 
 .App {
-  text-align: center;
+  /* text-align: center; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+.content {
+  flex: auto;
+  display: flex;
+}
+
+.content article {
+  flex: auto;
 }
 
 /* .App-logo {

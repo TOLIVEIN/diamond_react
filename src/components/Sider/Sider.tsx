@@ -1,8 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Sider = () => {
+const Sider: FC = () => {
     return(
-      <div></div>
+      <div>
+        <ul>
+          <li>
+            shi
+          </li>
+          <li>
+            ci
+          </li>
+          <li>
+            qu
+          </li>
+        </ul>
+      </div>
     )
 }
 

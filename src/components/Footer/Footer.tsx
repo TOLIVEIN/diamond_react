@@ -8,14 +8,14 @@ const Footer: FC<{ ref?: any, visible: boolean }> = props => {
 
   return (
     <>
-      {props.visible ? (
+      {/* {props.visible ? ( */}
         <div className="footer" id="observed-footer">
           <span>
             ---------------------------到底了----------------------------
           </span>
           {/* <ScrollLoad passRef={footerRef} text={"foot"}></ScrollLoad> */}
         </div>
-      ) : null}
+      {/* ) : null} */}
       {/* {Array.from(
         {length: 100},
         (text, index) => (
