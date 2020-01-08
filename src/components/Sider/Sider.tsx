@@ -1,9 +1,10 @@
 import React, { FC } from "react";
+import "./Sider.css";
 
 const Sider: FC = () => {
     return(
-      <div>
-        <ul>
+      <div className="menu">
+        <ul className="menu-option">
           <li>
             shi
           </li>
