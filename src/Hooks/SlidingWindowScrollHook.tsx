@@ -2,6 +2,7 @@ import React, { useState, useEffect, FC, useRef } from "react";
 // import Card from "../components/Card/Card";
 import { Shi } from '../model/data';
 import './SlidingWindowScrollHook.css';
+import Card from "../components/Card/Card";
 
 
 // const THRESHOLD = 15;
@@ -95,7 +96,7 @@ const SlidingWindowScrollHook: FC<{data: any, height: number, page: number, setP
 
 
     return (
-        <ul>
+        <>
             { props.data.map((item: Shi, index: number) => {
                 // const top = (props.height * (index + start)) + 'px';
                 const refVal = getReference(index, index === lastIndex);
@@ -104,18 +105,19 @@ const SlidingWindowScrollHook: FC<{data: any, height: number, page: number, setP
                 return (
                     // props.list.map((shi: Shi) => (
 
-                        // <Card
-                        //   key={item.id}
-                        //   head={[item.title, item.author]}
-                        //   body={item.paragraphs}
-                        //   passRef={refVal}
-                        // ></Card>
+                        <Card
+                          key={item.id}
+                          head={[item.title, item.author]}
+                          body={item.paragraphs}
+                          id={id}
+                          passRef={refVal}
+                        ></Card>
 
                     //   ))
-                <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
+                // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
                 )
             })}
-        </ul>
+        </>
     )
 }
 

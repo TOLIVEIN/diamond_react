@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import './Card.css';
 
-const Card: FC<{passRef?: any, head: string[], body: string[] | string, foot?: string}> = (props: any) => {
+const Card: FC<{id: string, passRef?: any, head: string[], body: string[] | string, foot?: string}> = (props: any) => {
     return (
-      <div className="card-container" ref={props.passRef}>
+      <div className="card-container" ref={props.passRef} id={props.id}>
         <div className="card">
           <div className="card-head">
             <blockquote>{props.head[0]}</blockquote>
