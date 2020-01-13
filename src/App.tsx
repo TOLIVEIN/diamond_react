@@ -14,12 +14,19 @@ const App: React.FC = () => {
         <Header></Header>
       </header>
       <div className="content">
+        <div className='left-blank'>
+        </div>
         <aside>
           <Sider></Sider>
         </aside>
         <article>
           <Main setVisible={ setVisible }></Main>
         </article>
+        <aside>
+          <Sider></Sider>
+        </aside>
+        <div className='right-blank'>
+        </div>
       </div>
       <footer>
         <Footer visible={ visible }></Footer>

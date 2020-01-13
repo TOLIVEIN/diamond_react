@@ -6,13 +6,13 @@ const Sider: FC = () => {
       <div className="menu">
         <ul className="menu-option">
           <li>
-            shi
+            a
           </li>
           <li>
-            ci
+            b
           </li>
           <li>
-            qu
+            c
           </li>
         </ul>
       </div>

@@ -96,7 +96,7 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
 
 
     return (
-        <>
+        <ul>
             { props.data.map((item: Shi, index: number) => {
                 // const top = (props.height * (index + start)) + 'px';
                 const refVal = getReference(index, index === lastIndex);
@@ -117,7 +117,7 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
                 // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
                 )
             })}
-        </>
+        </ul>
     )
 }
 

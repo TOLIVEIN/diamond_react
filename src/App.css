@@ -18,7 +18,30 @@
 }
 
 .content article {
-  flex: auto;
+  flex: 3;
+}
+
+.content aside {
+  flex: 1;
+}
+
+/* .sidebar {
+  position: fixed;
+  width: 10%;
+  height: 100%;
+} */
+
+.content aside {
+  /* position: fixed; */
+  display: flex;
+  background-color: rgb(179, 179, 179);
+}
+
+.left-blank {
+  flex: 2;
+}
+.right-blank {
+  flex: 2;
 }
 
 /* .App-logo {
