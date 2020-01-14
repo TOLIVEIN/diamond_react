@@ -1,4 +1,7 @@
 .back-top {
+    position: fixed;
+    left: 60%;
+    top: 80%;
     width: 100px;
     height: 100px;
     /* background-color: grey; */

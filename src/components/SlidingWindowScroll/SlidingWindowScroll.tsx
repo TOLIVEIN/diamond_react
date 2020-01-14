@@ -1,8 +1,9 @@
-import React, { useState, useEffect, FC, useRef } from "react";
+import React, { useState, useEffect, FC, useRef, useContext } from "react";
 // import Card from "../components/Card/Card";
 import { Shi } from '../../model/data';
 import './SlidingWindowScroll.css';
 import Card from "../Card/Card";
+import { visibleContext } from "../../App";
 
 
 // const THRESHOLD = 15;
@@ -10,6 +11,7 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
     // const [start, setStart] = useState(0);
     // const [end, setEnd] = useState(THRESHOLD);
     const [observer, setObserver] = useState();
+    const setVisible = useContext(visibleContext);
     // const [lastIndex, setLastIndex] = useState(0);
 
     const $bottomElement: any = useRef();
@@ -58,6 +60,10 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
             if (entry.isIntersecting && entry.target.id === 'bottom') {
                 console.log('bottom enter.');
                 props.setPage(props.page + 1);
+                console.log('visible: ', setVisible);
+                // setVisible(true);
+                // console.log('visible: ', setVisible);
+
                 // const maxStartIndex = listLength - 1 - THRESHOLD;
                 // const maxEndIndex = listLength - 1;
                 // const newEnd = (end + 10) <= maxEndIndex ? end + 10 : maxEndIndex;
