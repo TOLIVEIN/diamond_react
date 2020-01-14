@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import "./Sider.css";
+import BackTop from "../BackTop/BackTop";
 
 const Sider: FC = () => {
     return(
@@ -15,6 +16,7 @@ const Sider: FC = () => {
             c
           </li>
         </ul>
+        <BackTop></BackTop>
       </div>
     )
 }

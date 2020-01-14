@@ -21,9 +21,6 @@
   flex: 3;
 }
 
-.content aside {
-  flex: 1;
-}
 
 /* .sidebar {
   position: fixed;
@@ -34,7 +31,10 @@
 .content aside {
   /* position: fixed; */
   display: flex;
-  background-color: rgb(179, 179, 179);
+  flex: 1;
+  /* background-color: rgb(179, 179, 179); */
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
 }
 
 .left-blank {

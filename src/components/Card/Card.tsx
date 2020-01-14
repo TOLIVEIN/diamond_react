@@ -6,9 +6,9 @@ const Card: FC<{id: string, passRef?: any, head: string[], body: string[] | stri
       <div className="card-container" ref={props.passRef} id={props.id}>
         <div className="card">
           <div className="card-head">
-            <blockquote>{props.head[0]}</blockquote>
+            <blockquote className="title">{props.head[0]}</blockquote>
             {/* <br/> */}
-            <blockquote>{props.head[1]}</blockquote>
+            <blockquote className="author">{props.head[1]}</blockquote>
           </div>
 
           <div className="card-body">
