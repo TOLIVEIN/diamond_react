@@ -10,7 +10,7 @@ import { VisibleContext } from "../../App";
 const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage: any}> = (props) => {
     // const [start, setStart] = useState(0);
     // const [end, setEnd] = useState(THRESHOLD);
-    const [observer, setObserver] = useState();
+    const [observer, setObserver] = useState<IntersectionObserver>();
     const visibleContext = useContext(VisibleContext);
     // const [lastIndex, setLastIndex] = useState(0);
 
@@ -76,11 +76,14 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
             if (entry.isIntersecting && entry.target.id === 'top') {
                 // setLastIndex(updatedList.length - 1);
                 console.log('top enter.');
+                visibleContext(false);
+
                 // const newEnd = end === THRESHOLD ? THRESHOLD : (end - 10 > THRESHOLD ? end - 10 : THRESHOLD);
                 // const newStart = start === 0 ? 0 : (start - 10 > 0 ? start - 10 : 0);
                 // setStart(newStart);
                 // setEnd(newEnd);
             }
+
         });
     }
 

@@ -4,7 +4,8 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Sider from "./components/Sider/Sider";
 import Footer from "./components/Footer/Footer";
-import BackTop from "./components/BackTop/BackTop";
+// import BackTop from "./components/BackTop/BackTop";
+import TopJumper from "./components/TopJumper/TopJumper";
 
 
 export const VisibleContext = createContext(
@@ -31,7 +32,8 @@ const App: React.FC = () => {
           </VisibleContext.Provider>
         </article>
         <aside>
-          <BackTop visible={visible}></BackTop>
+          {/* <BackTop visible={visible}></BackTop> */}
+          <TopJumper></TopJumper>
           {/* <Sider></Sider> */}
         </aside>
         <div className="right-blank"></div>
