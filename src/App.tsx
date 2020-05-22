@@ -6,6 +6,9 @@ import Main from "./components/Main/Main";
 import Sider from "./components/Sider/Sider";
 // import BackTop from "./components/BackTop/BackTop";
 import TopJumper from "./components/TopJumper/TopJumper";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+library.add(faAngleDown);
 
 export const VisibleContext = createContext(
     {} as Dispatch<React.SetStateAction<boolean>>

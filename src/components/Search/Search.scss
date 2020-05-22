@@ -1,0 +1,50 @@
+.search {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+input {
+    // width: 300px;
+    height: 36px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    // appearance:none;
+    // -moz-appearance:none;
+    // -webkit-appearance:none;
+
+    flex: 4;
+    display: flex;
+
+}
+
+DropdownList {
+    flex: 1;
+    display: flex;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+  
+    // appearance:none;
+    // -moz-appearance:none;
+    // -webkit-appearance:none;
+    flex: 1;
+    // display: flex;
+}
+
+.header-left {
+    flex: 6;
+  }
+  .header-right {
+    flex: 6;
+  }

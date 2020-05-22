@@ -11,7 +11,7 @@ const TopJumper: FC<{}> = (props) => {
         const scroll = fromEvent(window, "scroll").pipe(
             map(() => window.scrollY),
             filter((_) => window.scrollY > 1000),
-            throttleTime(500)
+            throttleTime(1000)
         );
         scroll.subscribe((currentY) => {
             // console.log("Y*********", window.scrollY, currentY, previousY);
