@@ -1,31 +1,20 @@
-import React, { useState, useEffect, FC, useRef, useContext } from "react";
-// import Card from "../components/Card/Card";
-import { Shi } from '../../model/data';
-import './SlidingWindowScroll.css';
-import Card from "../Card/Card";
+import React, { FC, useContext, useEffect, useRef, useState } from "react";
 import { VisibleContext } from "../../App";
+import { Shi } from '../../model/data';
+import Card from "../Card/Card";
+import './SlidingWindowScroll.scss';
 
-
-// const THRESHOLD = 15;
 const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage: any}> = (props) => {
-    // const [start, setStart] = useState(0);
-    // const [end, setEnd] = useState(THRESHOLD);
+
     const [observer, setObserver] = useState<IntersectionObserver>();
-    const visibleContext = useContext(VisibleContext);
-    // const [lastIndex, setLastIndex] = useState(0);
+    const visibleContext = useContext(VisibleContext); //useless
 
     const $bottomElement: any = useRef();
     const $topElement: any = useRef();
 
-    // const updatedList = props.list.slice(start, end);
-    // const lastIndex: number = updatedList.length - 1;
     const lastIndex: number = props.data.length - 1;
 
-
-    // console.log('length: ', updatedList.length);
-
     useEffect(() => {
-        // setLastIndex(updatedList.length - 1);
         console.log('sliding effect......, data: ', props.data);
         initiateScrollObserver();
         return () => {
@@ -42,11 +31,11 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
         };
         const observer = new IntersectionObserver(callback, options)
         if ($topElement.current) {
-            console.log('observing top element.');
+            // console.log('observing top element.');
             observer.observe($topElement.current);
         }
         if ($bottomElement.current) {
-            console.log('observing bottom element.');
+            // console.log('observing bottom element.');
             observer.observe($bottomElement.current);
         }
 
@@ -55,33 +44,17 @@ const SlidingWindowScroll: FC<{data: any, height: number, page: number, setPage:
 
     const callback = (entries: any[], observer: any) => {
         entries.forEach((entry: any, index: any) => {
-            // const listLength = props.data.content.length;
-            // console.log('entry item id:', entry.target.id);
             if (entry.isIntersecting && entry.target.id === 'bottom') {
-                console.log('bottom enter.');
+                // console.log('bottom enter.');
                 props.setPage(props.page + 1);
                 
-                visibleContext(true);
-                console.log('visible: ', visibleContext);
-                // setVisible(true);
-                // console.log('visible: ', setVisible);
-
-                // const maxStartIndex = listLength - 1 - THRESHOLD;
-                // const maxEndIndex = listLength - 1;
-                // const newEnd = (end + 10) <= maxEndIndex ? end + 10 : maxEndIndex;
-                // const newStart = (end - 10) <= maxStartIndex ? end - 10: maxStartIndex;
-                // setStart(newStart);
-                // setEnd(newEnd);
+                visibleContext(true); //useless
+                // console.log('visible: ', visibleContext); //useless
             }
             if (entry.isIntersecting && entry.target.id === 'top') {
-                // setLastIndex(updatedList.length - 1);
-                console.log('top enter.');
-                visibleContext(false);
+                // console.log('top enter.');
+                visibleContext(false); //useless
 
-                // const newEnd = end === THRESHOLD ? THRESHOLD : (end - 10 > THRESHOLD ? end - 10 : THRESHOLD);
-                // const newStart = start === 0 ? 0 : (start - 10 > 0 ? start - 10 : 0);
-                // setStart(newStart);
-                // setEnd(newEnd);
             }
 
         });

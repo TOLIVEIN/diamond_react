@@ -1,65 +1,35 @@
-import React, { FC } from "react";
-import "./TopJumper.scss";
-import { useState } from "react";
-import { useEffect } from "react";
-
-import { throttleTime, filter, map } from "rxjs/operators";
+import React, { FC, useEffect, useState } from "react";
 import { fromEvent } from "rxjs";
+import { filter, map, throttleTime } from "rxjs/operators";
+import "./TopJumper.scss";
 
 const TopJumper: FC<{}> = (props) => {
     const [show, setShow] = useState(false);
-    // const previousY = 0;
+    const [previousY, setPreviousY] = useState(0);
 
     useEffect(() => {
         const scroll = fromEvent(window, "scroll").pipe(
             map(() => window.scrollY),
-            filter((_) => window.scrollY> 1000),
+            filter((_) => window.scrollY > 1000),
             throttleTime(500)
         );
         scroll.subscribe((currentY) => {
-            console.log("Y*********", window.scrollY);
-            const shouldShow = window.scrollY > 1000;
-            console.log(
-                "********************, shouldShow: " +
-                    shouldShow +
-                    ", show: " +
-                    show
-            );
+            // console.log("Y*********", window.scrollY, currentY, previousY);
+            const shouldShow =
+                window.scrollY > 1000 && currentY - previousY > 0;
+            // console.log(
+            //     "********************, shouldShow: " +
+            //         shouldShow +
+            //         ", show: " +
+            //         show
+            // );
             if (shouldShow !== show) {
-
-
                 setShow(shouldShow);
+                setPreviousY(currentY);
             }
             // setShow(true);
         });
-    }, [show]);
-
-    // const createThrottle = (callback: Function, delay?: number, thisArg?: any): Function => {
-    //     let lastInvokeTime: number = Date.now();
-    //     const delay_time = Number(delay) || 200;
-    //     return (...args: any[]): void => {
-    //         const now = Date.now();
-    //         if (now - delay_time <= lastInvokeTime) {
-    //             return;
-    //         }
-    //         lastInvokeTime = now;
-    //         callback.call(thisArg, ...args);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     const listener = createThrottle(() => {
-    //         const shouldShow = window.scrollY > 300;
-    //         if (shouldShow !== show) {
-    //             setShow(shouldShow);
-    //         }
-    //     }, 500) as EventListener;
-
-    //     document.addEventListener('scroll', listener);
-    //     return () => {
-    //         document.removeEventListener('scroll', listener);
-    //     }
-    // }, [show])
+    }, [previousY, show]);
 
     return show ? (
         <>

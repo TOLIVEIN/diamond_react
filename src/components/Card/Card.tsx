@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import './Card.css';
+import './Card.scss';
 
 const Card: FC<{id: string, passRef?: any, head: string[], body: string[] | string, foot?: string}> = (props: any) => {
     return (
