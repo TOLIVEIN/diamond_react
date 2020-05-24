@@ -1,36 +1,49 @@
 // import { fromEvent } from 'rxjs';
-import axios from "axios";
 import React, { FC, useEffect, useState } from "react";
-import { initialShi } from "../../model/data.model";
+import { initialShi, initialCi, initialQu } from '../../model/data.model';
 import SlidingWindowScroll from "../SlidingWindowScroll/SlidingWindowScroll";
 // import Card from "../Card/Card";
 import "./Main.scss";
+import request from "../../apis/request";
+import { category$ } from '../Sider/Sider';
+import { Shi, Ci, Qu } from '../../model/data';
 
 const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     const [click, setClick] = useState(0);
     // const [showData, setShowData] = useState(false);
-    const [data, setData] = useState(initialShi);
+    const [data, setData] = useState<any>(initialShi);
     const [page, setPage] = useState(0);
+    const [category, setCategory] = useState('shi')
+
+    // category$.subscribe((cate) => {
+    //   console.log(cate, Date.now());
+    // })
     // const [sort, setSort] = useState(initialSort);
 
     // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
     useEffect(() => {
         console.log("main effect......, page: ", page);
-        getShi("http://localhost:8080/shi/author/李白");
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page]);
-
-    function getShi(url: string) {
-        axios
-            .get(url, {
-                params: {
-                    page: page,
-                },
-            })
-            // .post(url, {
-            //   pageNumber: pageNumber,
-            // })
+        category$.subscribe((cate: string) => {
+          setCategory(cate)
+          if (cate !== category) {
+            setData([])
+          }
+          // if (cate === 'shi'){
+          //   setData(initialShi)
+          // } else if (cate === 'ci') {
+          //   setData(initialCi)
+          // } else if (cate === 'qu') {
+          //   setData(initialQu)
+          // }
+          // data()
+            // console.log(cate, Date.now());
+        });
+        const url = category;
+        //  + "/author/李白";
+        request(url, {
+            page: page,
+        })
             .then((response) => {
                 console.log(response.data);
                 setPage(response.data.pageable.pageNumber);
@@ -43,19 +56,46 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
             .catch((error) => {
                 return "fail";
             });
-    }
+        // getShi("http://localhost:8080/shi/author/李白");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [category, page]);
+
+    // function getShi(url: string) {
+    //     axios
+    //         .get(url, {
+    //             params: {
+    //                 page: page,
+    //             },
+    //         })
+    //         // .post(url, {
+    //         //   pageNumber: pageNumber,
+    //         // })
+    //         .then((response) => {
+    //             console.log(response.data);
+    //             setPage(response.data.pageable.pageNumber);
+    //             if (data === initialShi) {
+    //                 data.pop();
+    //             }
+    //             setData(data.concat(response.data.content));
+    //             console.log("data: ", data);
+    //         })
+    //         .catch((error) => {
+    //             return "fail";
+    //         });
+    // }
     // const data: any = getShi('http://localhost:8080/shi/author/李白')
     // getShi('http://localhost:8080/shi/author/李白')
 
     return (
-        <div className="main-container">
-            <div className="test-button">
-                <button onClick={() => setClick(click + 1)}>+</button>
-                <button onClick={() => setClick(click - 1)}>-</button>
-                <label>{click}</label>
-            </div>
+        <>
+            <div className="main-container">
+                <div className="test-button">
+                    <button onClick={() => setClick(click + 1)}>+</button>
+                    <button onClick={() => setClick(click - 1)}>-</button>
+                    <label>{click}</label>
+                </div>
 
-            {/* {!showData ? (
+                {/* {!showData ? (
         <button
           className="getData-button"
           onClick={() => {
@@ -70,7 +110,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
           Get Data
         </button>
       ) : null} */}
-            {/* <button
+                {/* <button
         className="getData-button"
         onClick={() => {
           setPageNumber(pageNumber + 1)
@@ -83,7 +123,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
       >
         Get Data
       </button> */}
-            {/* {showData
+                {/* {showData
         ? data.content.map(shi => (
             <Card
               key={shi.id}
@@ -93,15 +133,17 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
           ))
         : null} */}
 
-            {data.length === 1 && data[0].id === "" ? null : (
-                <SlidingWindowScroll
-                    data={data}
-                    height={195}
-                    page={page}
-                    setPage={setPage}
-                ></SlidingWindowScroll>
-            )}
-        </div>
+                {data.length === 1 && data[0].id === "" ? null : (
+                    <SlidingWindowScroll
+                        data={data}
+                        height={195}
+                        page={page}
+                        setPage={setPage}
+                        category={category}
+                    ></SlidingWindowScroll>
+                )}
+            </div>
+        </>
     );
 };
 

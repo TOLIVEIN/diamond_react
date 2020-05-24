@@ -11,7 +11,9 @@ input {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+
     // appearance:none;
     // -moz-appearance:none;
     // -webkit-appearance:none;
@@ -34,6 +36,7 @@ button {
     border-radius: 4px;
     font-size: 16px;
     font-family: "Microsoft YaHei";
+    color:rgba($color: #000000, $alpha: 0.5);
   
     // appearance:none;
     // -moz-appearance:none;
