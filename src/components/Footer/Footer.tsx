@@ -10,7 +10,7 @@ const Footer: FC<{ ref?: any; visible: boolean }> = (props) => {
             {/* {props.visible ? ( */}
             <div className="footer" id="observed-footer">
                 <span>
-                    ---------------------------到底了----------------------------
+                    {/* ---------------------------到底了---------------------------- */}
                 </span>
                 {/* <ScrollLoad passRef={footerRef} text={"foot"}></ScrollLoad> */}
             </div>

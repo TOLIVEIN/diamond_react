@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useRef, useState } from "react";
+import React, { FC, useContext, useEffect, useRef } from "react";
 import { VisibleContext } from "../../App";
 import { Shi, Qu, Ci } from "../../model/data";
 import Card from "../Card/Card";
@@ -11,7 +11,7 @@ const SlidingWindowScroll: FC<{
     setPage: any;
     category: string;
 }> = (props) => {
-    const [observer, setObserver] = useState<IntersectionObserver>();
+    // const [observer, setObserver] = useState<IntersectionObserver>();
     const visibleContext = useContext(VisibleContext); //useless
 
     const $bottomElement: any = useRef();
@@ -22,10 +22,10 @@ const SlidingWindowScroll: FC<{
     useEffect(() => {
         console.log("sliding effect......, data: ", props.data);
         initiateScrollObserver();
-        return () => {
-            resetObservation();
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // return () => {
+        //     resetObservation();
+        // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.data]);
 
     const initiateScrollObserver = () => {
@@ -44,7 +44,7 @@ const SlidingWindowScroll: FC<{
             observer.observe($bottomElement.current);
         }
 
-        setObserver(observer);
+        // setObserver(observer);
     };
 
     const callback = (entries: any[], observer: any) => {
@@ -63,10 +63,10 @@ const SlidingWindowScroll: FC<{
         });
     };
 
-    const resetObservation = () => {
-        observer && observer.unobserve($topElement.current);
-        observer && observer.unobserve($bottomElement.current);
-    };
+    // const resetObservation = () => {
+    //     observer && observer.unobserve($topElement.current);
+    //     observer && observer.unobserve($bottomElement.current);
+    // };
 
     const getReference = (index: number, isLastIndex: boolean) => {
         if (index === 0) {

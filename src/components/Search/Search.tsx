@@ -1,22 +1,39 @@
-import React, { FC, useState } from "react";
-import DropdownList from "../DropdownList/DropdownList";
+import React, { FC, useState, useEffect } from "react";
+import DropdownList, { searchType$ } from "../DropdownList/DropdownList";
 import "./Search.scss";
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { searchItem } from '../../config/property';
 
 const Search: FC<{ type?: string }> = (props) => {
-    const items = ["作者", "标题", "内容"];
+    const items: string[] = Object.values(searchItem);
 
-    const [searchData, setSearchData] = useState('');
+    const [searchType, setSearchType] = useState('author');
+    const [searchText, setSearchText] = useState('');
 
-    const search$ = new Subject();
-    search$.pipe(
-        debounceTime(1000),
-        distinctUntilChanged()
-    ).subscribe((searchText: any) => {
-        setSearchData(searchText);
-        console.log(searchText);
-    })
+    // const [searchData, setSearchData] = useState();
+    let searchData: string[] = [];
+
+
+    useEffect(() => {
+        searchType$.subscribe((type) => {
+            const key: string | any = Object.keys(searchItem).find(k => searchItem[k] === type);
+            setSearchType(key);
+            console.log('type:', key);
+          })
+    
+        searchText$.pipe(
+            debounceTime(500),
+            distinctUntilChanged()
+        ).subscribe((searchText: any) => {
+            setSearchText(searchText);
+            console.log(searchText);
+        })
+
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
 
     return (
@@ -25,13 +42,18 @@ const Search: FC<{ type?: string }> = (props) => {
             <DropdownList items={items}></DropdownList>
             {/* <input className="search-content" type="text" id="search" /> */}
             <input className="search-content" type="text" id="search" onChange={(e) => {
-                search$.next(e.target.value);
+                searchText$.next(e.target.value);
                 }}/>
-            <button className="search-button" >搜索</button>
+            <button className="search-button" onClick={(e) => {
+                searchData = [searchType, searchText];
+                console.log(searchData);
+                searchData$.next(searchData);
+            }}>搜索</button>
             <div className="header-right"></div>
             {/* <label htmlFor="search">搜索</label> */}
         </div>
     );
 };
-
+export const searchText$ = new Subject<string>();
+export const searchData$ = new Subject<string[]>();
 export default Search;

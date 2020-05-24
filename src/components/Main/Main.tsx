@@ -1,45 +1,50 @@
 // import { fromEvent } from 'rxjs';
 import React, { FC, useEffect, useState } from "react";
-import { initialShi, initialCi, initialQu } from '../../model/data.model';
 import SlidingWindowScroll from "../SlidingWindowScroll/SlidingWindowScroll";
 // import Card from "../Card/Card";
 import "./Main.scss";
 import request from "../../apis/request";
 import { category$ } from '../Sider/Sider';
-import { Shi, Ci, Qu } from '../../model/data';
+import { searchData$ } from "../Search/Search";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     const [click, setClick] = useState(0);
     // const [showData, setShowData] = useState(false);
-    const [data, setData] = useState<any>(initialShi);
+    const [data, setData] = useState<any>([]);
     const [page, setPage] = useState(0);
     const [category, setCategory] = useState('shi')
 
-    // category$.subscribe((cate) => {
-    //   console.log(cate, Date.now());
-    // })
-    // const [sort, setSort] = useState(initialSort);
+    const [url, setUrl] = useState('shi/')
+    
+    // const [searchType, setSearchType] = useState('author');
+    // const [searchText, setSearchText] = useState('');
 
-    // fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
-
+    // let url = category + '/';
+    
     useEffect(() => {
-        console.log("main effect......, page: ", page);
+      console.log("main effect......, page: ", page);
         category$.subscribe((cate: string) => {
-          setCategory(cate)
+          console.log('****************', cate, category);
           if (cate !== category) {
+            console.log('清除.......')
             setData([])
           }
-          // if (cate === 'shi'){
-          //   setData(initialShi)
-          // } else if (cate === 'ci') {
-          //   setData(initialCi)
-          // } else if (cate === 'qu') {
-          //   setData(initialQu)
-          // }
-          // data()
-            // console.log(cate, Date.now());
+          console.log('设置category......')
+          setCategory(cate);
+          setUrl(cate + '/');
+          // url = category + '/';
+            // console.log('category url: ', url);
         });
-        const url = category;
+
+        searchData$.subscribe((data: string[]) => {
+          // url += data.join('/')
+          setUrl(url + data.join('/'));
+          setData([]);
+          // console.log('search url:', url);
+          // category$.unsubscribe();
+        })
+
+        
         //  + "/author/李白";
         request(url, {
             page: page,
@@ -47,18 +52,21 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
             .then((response) => {
                 console.log(response.data);
                 setPage(response.data.pageable.pageNumber);
-                if (data === initialShi) {
-                    data.pop();
-                }
+                // if (data === '') {
+                //     data.pop();
+                // }
                 setData(data.concat(response.data.content));
+                // setUrl(category + '/');
                 console.log("data: ", data);
             })
             .catch((error) => {
                 return "fail";
             });
+
+
         // getShi("http://localhost:8080/shi/author/李白");
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [category, page]);
+    }, [category, page, url]);
 
     // function getShi(url: string) {
     //     axios
@@ -94,44 +102,6 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
                     <button onClick={() => setClick(click - 1)}>-</button>
                     <label>{click}</label>
                 </div>
-
-                {/* {!showData ? (
-        <button
-          className="getData-button"
-          onClick={() => {
-            if (!showData) {
-              getShi("http://localhost:8080/shi/author/李白");
-              // console.log("data: ", data);
-            }
-            setShowData(!showData);
-            props.setVisible(true);
-          }}
-        >
-          Get Data
-        </button>
-      ) : null} */}
-                {/* <button
-        className="getData-button"
-        onClick={() => {
-          setPageNumber(pageNumber + 1)
-          // if (!showData) {
-          //   getShi("http://localhost:8080/shi");
-          //   console.log("data: ", data);
-          // }
-          // setShowData(!showData);
-        }}
-      >
-        Get Data
-      </button> */}
-                {/* {showData
-        ? data.content.map(shi => (
-            <Card
-              key={shi.id}
-              head={[shi.title, shi.author]}
-              body={shi.paragraphs}
-            ></Card>
-          ))
-        : null} */}
 
                 {data.length === 1 && data[0].id === "" ? null : (
                     <SlidingWindowScroll
