@@ -6,6 +6,8 @@ import "./Main.scss";
 import request from "../../apis/request";
 import { category$ } from "../Sider/Sider";
 import { searchData$ } from "../Search/Search";
+import { sctcItem } from "../../config/property";
+import { exchangeTC, exchangeSC } from "../../config/utils";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     // const [showData, setShowData] = useState(false);
@@ -29,6 +31,20 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
         });
 
         searchData$.subscribe((data: string[]) => {
+            // let searchContent = '';
+            if (
+                sctcItem.sc.indexOf(category) &&
+                /[\u4e00-\u9fa5]/g.test(data[1])
+            ) {
+                data[1] = exchangeTC(data[1]);
+            } else if (
+                sctcItem.tc.indexOf(category) &&
+                /[\u4e00-\u9fa5]/g.test(data[1])
+            ) {
+                data[1] = exchangeSC(data[1]);
+            }
+            // console.log(`searchText: ${data[1]}`);
+
             setData([]);
             setPage(0);
             if (category === "ci" && data[0] === "title") {
@@ -37,25 +53,28 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
         });
 
         if (page < totalPage) {
-
-          request(url, {
-              page: page,
-          })
-              .then((response) => {
-                  console.log(response.data);
-                  setData(data.concat(response.data.content));
-                  setPage(response.data.pageable.pageNumber);
-                  setTotalPage(response.data.totalPages)
-                  console.log("data: ", data);
-              })
-              .catch((error) => {
-                  return "fail";
-              })
-              .finally(() => {
-                  console.log(
-                      `after changing category, category:${category}, page:${page}, url:${url}`
-                  );
-              });
+            request(url, {
+                page: page,
+            })
+                .then((response) => {
+                    console.log(response.data);
+                    setData(data.concat(response.data.content));
+                    setPage(response.data.pageable.pageNumber);
+                    setTotalPage(
+                        response.data.totalPages === 0
+                            ? 1
+                            : response.data.totalPages
+                    );
+                    console.log("data: ", data);
+                })
+                .catch((error) => {
+                    return "fail";
+                })
+                .finally(() => {
+                    console.log(
+                        `after changing category, category:${category}, page:${page}, url:${url}`
+                    );
+                });
         }
 
         // return () => {
