@@ -1,42 +1,140 @@
 .drop-list {
-    // width: 100px;
-    height: 40px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: "Microsoft YaHei";
-    padding: 1px 20px 1px 20px;
-    color:rgba($color: #000000, $alpha: 0.5);
+  width: 100px;
+  height: 40px;
+  // background-color: #fff;
+  // border: 1px solid #ddd;
+  // border-radius: 4px;
+  // font-size: 16px;
+  // font-family: "Microsoft YaHei";
+  // padding: 1px 20px 1px 20px;
+  // color: rgba($color: #000000, $alpha: 0.5);
 
-  
-    // appearance:none;
-    // -moz-appearance:none;
-    // -webkit-appearance:none;
+  // appearance: none;
+  // -moz-appearance: none;
+  // -webkit-appearance: none;
+
+  transition: all 0.6s;
+
+  &:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+    .drop-content {
+      display: block;
+      transition: 0.6s;
+    }
+
+    .drop-button {
+      background-color: grey;
+      color: white;
+    }
   }
-
-  select {
-    text-align: center;
-  }
-
+}
 
 // select {
-//     /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
-//     border: solid 1px #000;
-  
-//     /*很关键：将默认的select选择框样式清除*/
-//     appearance:none;
-//     -moz-appearance:none;
-//     -webkit-appearance:none;
-  
-//     /*在选择框的最右侧中间显示小箭头图片*/
-//     // background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
-  
-  
-//     /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-//     padding-right: 14px;
-//   }
-  
-  
-//   /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
-//   select::-ms-expand { display: none; }
+//   text-align: center;
+//   background-color: #4CAF50;
+//   color: white;
+//   padding: 16px;
+//   font-size: 16px;
+//   border: none;
+//   cursor: pointer;
+// }
+
+.drop-button {
+  width: inherit;
+  height: inherit;
+  background-color: white;
+  color:rgba($color: #000000, $alpha: 0.5);
+
+  // padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  transition: 0.6s;
+
+  //  .drop-content {
+  //     display: block;
+  //   }
+}
+
+.drop-content {
+  width: inherit;
+  // height: inherit;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  // min-width: 160px;
+
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+  .drop-item {
+    width: inherit;
+    // height: inherit;
+
+    background-color: white;
+    color: black;
+    // padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+    transition: 0.6s;
+
+    padding: 12px 0px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background-color: #f1f1f1;
+      transition: 0.6s;
+    }
+  }
+}
+
+// .drop-button {
+//   background-color: #4CAF50;
+//   color: white;
+//   padding: 16px;
+//   font-size: 16px;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// /* 容器 <div> - 需要定位下拉内容 */
+// .drop-list {
+//   position: relative;
+//   display: inline-block;
+// }
+
+// /* 下拉内容 (默认隐藏) */
+// .drop-content {
+//   display: none;
+//   position: absolute;
+//   background-color: #f9f9f9;
+//   min-width: 160px;
+//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+// }
+
+// /* 下拉菜单的链接 */
+// .drop-content a {
+//   color: black;
+//   padding: 12px 16px;
+//   text-decoration: none;
+//   display: block;
+// }
+
+// /* 鼠标移上去后修改下拉菜单链接颜色 */
+// .drop-content a:hover {background-color: #f1f1f1}
+
+// /* 在鼠标移上去后显示下拉菜单 */
+// .drop-list:hover .drop-content {
+//   display: block;
+// }
+
+// /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+// .dropdown:hover .drop-button {
+//   background-color: #3e8e41;
+// }

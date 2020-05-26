@@ -19,17 +19,16 @@ const Sider: FC = () => {
                         return (
                             <li key={index}>
                                 <button
+                                    className="nav-button"
                                     disabled={buttonState[index]}
                                     onClick={(e) => {
                                         setButtonState(
-                                            buttonState.map(
-                                                (s, i) => {
-                                                    if (i === index) {
-                                                        s = true;
-                                                    } else s = false;
-                                                    return s;
-                                                }
-                                            )
+                                            buttonState.map((s, i) => {
+                                                if (i === index) {
+                                                    s = true;
+                                                } else s = false;
+                                                return s;
+                                            })
                                         );
 
                                         // const category$ = new Subject<string>();

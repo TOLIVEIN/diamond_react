@@ -90,13 +90,13 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
         <>
             <div className="main-container">
                 {/* {(data.length === 1 && data[0].id === "") || (data.length === 0)? null : ( */}
-                    <SlidingWindowScroll
-                        data={data}
-                        height={195}
-                        page={page}
-                        setPage={setPage}
-                        category={category}
-                    ></SlidingWindowScroll>
+                <SlidingWindowScroll
+                    data={data}
+                    height={195}
+                    page={page}
+                    setPage={setPage}
+                    category={category}
+                ></SlidingWindowScroll>
                 {/* )} */}
             </div>
         </>

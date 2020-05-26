@@ -1,4 +1,4 @@
-import { Sort, Page, Data } from "./data";
+import { Sort, Page } from "./data";
 
 export const initialSort: Sort = {
   sorted: false,

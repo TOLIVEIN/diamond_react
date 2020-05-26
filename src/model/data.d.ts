@@ -1,4 +1,3 @@
-import { Shi } from "./data.d";
 export interface Data<T> {
     content: T[];
     pageable: Page;
