@@ -3,6 +3,12 @@ export const navItem = [
     { code: "ci", text: "词" },
     { code: "qu", text: "曲" },
     { code: "huajianji", text: "花间集" },
+    { code: "nantang", text: "南唐" },
+    { code: "lunyu", text: "论语" },
+    { code: "shijing", text: "诗经" },
+    { code: "youmengying", text: "幽梦影" },
+    { code: "sishuwujing", text: "四书五经" },
+    { code: "mengxue", text: "蒙学" },
 ];
 
 export const searchItem: any = {

@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
 const request = (
     url: string,
     params: any,
-    // method='get',
+    method='get',
     // ...rest
 ) => {
     return axiosInstance({

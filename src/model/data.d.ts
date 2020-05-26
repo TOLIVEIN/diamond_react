@@ -17,9 +17,15 @@ export interface Poetry {
     title?: string;
     rhythmic?: string;
     notes?: string[];
-    dynasty: string;
-    author: string;
-    paragraphs: string[];
+    chapter?: string;
+    section?: string;
+    dynasty?: string;
+    author?: string;
+    paragraphs?: string[];
+    content?: string[];
+    comment?: string[];
+    tags?: string;
+    abstract?: string;
 }
 
 // export interface Shi {

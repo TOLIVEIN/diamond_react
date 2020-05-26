@@ -2,7 +2,7 @@ import React, { FC, useContext, useEffect, useRef } from "react";
 import { VisibleContext } from "../../App";
 import Card from "../Card/Card";
 import "./SlidingWindowScroll.scss";
-import { Poetry } from '../../model/data';
+import { Poetry } from "../../model/data";
 
 const SlidingWindowScroll: FC<{
     data: any;
@@ -87,15 +87,25 @@ const SlidingWindowScroll: FC<{
                 const refVal = getReference(index, index === lastIndex);
                 const id =
                     index === 0 ? "top" : index === lastIndex ? "bottom" : "";
-                
+
                 const head = (): (string | undefined)[] => {
-                    if (!item.title) {
-                        return [item.rhythmic, item.author]
+                    if (!item.title && item.rhythmic) {
+                        return [item.rhythmic, item.author];
+                    } else if (!item.title && !item.rhythmic && item.chapter) {
+                        return [item.chapter, item.author];
+                    } else if (item.title && item.chapter && item.section) {
+                        return [item.chapter + "·" + item.section, item.title];
+                    } else {
+                        return [item.title, item.author];
                     }
-                    else {
-                        return [item.title, item.author]
+                };
+                const body = (): string[] | undefined => {
+                    if (!item.paragraphs) {
+                        return item.content;
+                    } else {
+                        return item.paragraphs;
                     }
-                }
+                };
                 // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
                 return (
                     // props.list.map((shi: Shi) => (
@@ -103,7 +113,7 @@ const SlidingWindowScroll: FC<{
                         key={index}
                         id={id}
                         head={head()}
-                        body={item.paragraphs}
+                        body={body()}
                         notes={item.notes}
                         passRef={refVal}
                     ></Card>

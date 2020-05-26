@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import './Card.scss';
 
-const Card: FC<{id: string, passRef?: any, head: (string | undefined)[], body: string[] | string, notes?: string[], foot?: string}> = (props: any) => {
+const Card: FC<{id: string, passRef?: any, head: (string | undefined)[], body: string[] | string | undefined, notes?: string[], foot?: string}> = (props: any) => {
     return (
       <div className="card-container" ref={props.passRef} id={props.id}>
         <div className="card">
@@ -12,7 +12,7 @@ const Card: FC<{id: string, passRef?: any, head: (string | undefined)[], body: s
           </div>
 
           <div className="card-body">
-              {props.body instanceof Array ? props.body.map((b: any) => <blockquote key={b}>{b}</blockquote>) : <blockquote>{props.body}</blockquote>}
+              {props.body instanceof Array ? props.body.map((b: any, i: number) => <blockquote key={i}>{b}</blockquote>) : <blockquote>{props.body}</blockquote>}
             {/* <blockquote>{props.body}</blockquote> */}
           </div>
 
