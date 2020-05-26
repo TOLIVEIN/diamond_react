@@ -89,7 +89,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     return (
         <>
             <div className="main-container">
-                {data.length === 1 && data[0].id === "" ? null : (
+                {/* {(data.length === 1 && data[0].id === "") || (data.length === 0)? null : ( */}
                     <SlidingWindowScroll
                         data={data}
                         height={195}
@@ -97,7 +97,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
                         setPage={setPage}
                         category={category}
                     ></SlidingWindowScroll>
-                )}
+                {/* )} */}
             </div>
         </>
     );

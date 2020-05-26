@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import './Card.scss';
 
-const Card: FC<{id: string, passRef?: any, head: string[], body: string[] | string, foot?: string}> = (props: any) => {
+const Card: FC<{id: string, passRef?: any, head: (string | undefined)[], body: string[] | string, notes?: string[], foot?: string}> = (props: any) => {
     return (
       <div className="card-container" ref={props.passRef} id={props.id}>
         <div className="card">

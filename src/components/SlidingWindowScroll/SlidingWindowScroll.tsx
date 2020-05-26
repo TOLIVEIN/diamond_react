@@ -1,8 +1,8 @@
 import React, { FC, useContext, useEffect, useRef } from "react";
 import { VisibleContext } from "../../App";
-import { Shi, Qu, Ci } from "../../model/data";
 import Card from "../Card/Card";
 import "./SlidingWindowScroll.scss";
+import { Poetry } from '../../model/data';
 
 const SlidingWindowScroll: FC<{
     data: any;
@@ -25,7 +25,7 @@ const SlidingWindowScroll: FC<{
         // return () => {
         //     resetObservation();
         // };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.data]);
 
     const initiateScrollObserver = () => {
@@ -82,7 +82,37 @@ const SlidingWindowScroll: FC<{
 
     return (
         <ul>
-            {props.category === "shi" &&
+            {props.data.map((item: Poetry, index: number) => {
+                // const top = (props.height * (index + start)) + 'px';
+                const refVal = getReference(index, index === lastIndex);
+                const id =
+                    index === 0 ? "top" : index === lastIndex ? "bottom" : "";
+                
+                const head = (): (string | undefined)[] => {
+                    if (!item.title) {
+                        return [item.rhythmic, item.author]
+                    }
+                    else {
+                        return [item.title, item.author]
+                    }
+                }
+                // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
+                return (
+                    // props.list.map((shi: Shi) => (
+                    <Card
+                        key={index}
+                        id={id}
+                        head={head()}
+                        body={item.paragraphs}
+                        notes={item.notes}
+                        passRef={refVal}
+                    ></Card>
+
+                    //   ))
+                    // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
+                );
+            })}
+            {/* {props.category === "shi" &&
                 props.data.map((item: Shi, index: number) => {
                     // const top = (props.height * (index + start)) + 'px';
                     const refVal = getReference(index, index === lastIndex);
@@ -158,78 +188,7 @@ const SlidingWindowScroll: FC<{
                         //   ))
                         // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
                     );
-                })}
-            {/* {props.category === "shi"
-                ? props.data.map((item: Shi, index: number) => {
-                      // const top = (props.height * (index + start)) + 'px';
-                      const refVal = getReference(index, index === lastIndex);
-                      const id =
-                          index === 0
-                              ? "top"
-                              : index === lastIndex
-                              ? "bottom"
-                              : "";
-                      // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                      return (
-                          // props.list.map((shi: Shi) => (
-                          <Card
-                              key={item.id}
-                              head={[item.title, item.author]}
-                              body={item.paragraphs}
-                              passRef={refVal}
-                          ></Card>
-
-                          //   ))
-                          // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                      );
-                  })
-                : props.category === "ci"
-                ? props.data.map((item: Ci, index: number) => {
-                      // const top = (props.height * (index + start)) + 'px';
-                      const refVal = getReference(index, index === lastIndex);
-                      const id =
-                          index === 0
-                              ? "top"
-                              : index === lastIndex
-                              ? "bottom"
-                              : "";
-                      // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                      return (
-                          // props.list.map((shi: Shi) => (
-                          <Card
-                              key={id}
-                              head={[item.rhythmic, item.author]}
-                              body={item.paragraphs}
-                              passRef={refVal}
-                          ></Card>
-
-                          //   ))
-                          // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                      );
-                  })
-                : props.data.map((item: Qu, index: number) => {
-                      // const top = (props.height * (index + start)) + 'px';
-                      const refVal = getReference(index, index === lastIndex);
-                      const id =
-                          index === 0
-                              ? "top"
-                              : index === lastIndex
-                              ? "bottom"
-                              : "";
-                      // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                      return (
-                          // props.list.map((shi: Shi) => (
-                          <Card
-                              key={id}
-                              head={[item.title, item.author]}
-                              body={item.paragraphs}
-                              passRef={refVal}
-                          ></Card>
-
-                          //   ))
-                          // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                      );
-                  })} */}
+                })} */}
         </ul>
     );
 };

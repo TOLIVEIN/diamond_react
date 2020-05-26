@@ -1,3 +1,4 @@
+import { Shi } from "./data.d";
 export interface Data<T> {
     content: T[];
     pageable: Page;
@@ -12,25 +13,35 @@ export interface Data<T> {
     empty: boolean;
 }
 
-export interface Shi {
-    id: string;
-    title: string;
-    author: string;
-    paragraphs: string[];
-};
-
-export interface Ci {
-    rhythmic: string;
-    author: string;
-    paragraphs: string[];
-}
-
-export interface Qu {
+export interface Poetry {
+    id?: string;
+    title?: string;
+    rhythmic?: string;
+    notes?: string[];
     dynasty: string;
-    title: string;
     author: string;
     paragraphs: string[];
 }
+
+// export interface Shi {
+//     id: string;
+//     title: string;
+//     author: string;
+//     paragraphs: string[];
+// };
+
+// export interface Ci {
+//     rhythmic: string;
+//     author: string;
+//     paragraphs: string[];
+// }
+
+// export interface Qu {
+//     dynasty: string;
+//     title: string;
+//     author: string;
+//     paragraphs: string[];
+// }
 
 export interface Page {
     sort: Sort;
@@ -40,7 +51,6 @@ export interface Page {
     unpaged: boolean;
     paged: boolean;
 }
-
 
 export interface Sort {
     sorted: boolean;

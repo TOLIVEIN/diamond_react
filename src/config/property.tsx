@@ -2,6 +2,7 @@ export const navItem = [
     { code: "shi", text: "诗" },
     { code: "ci", text: "词" },
     { code: "qu", text: "曲" },
+    { code: "huajianji", text: "花间集" },
 ];
 
 export const searchItem: any = {
