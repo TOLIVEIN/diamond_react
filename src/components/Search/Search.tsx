@@ -15,7 +15,7 @@ const Search: FC<{ type?: string }> = (props) => {
     let searchData: string[] = [];
 
     useEffect(() => {
-        searchType$.subscribe((type) => {
+        searchType$.subscribe((type: string) => {
             const key: string | any = Object.keys(searchItem).find(
                 (k) => searchItem[k] === type
             );
@@ -44,6 +44,13 @@ const Search: FC<{ type?: string }> = (props) => {
                 id="search"
                 onChange={(e) => {
                     searchText$.next(e.target.value);
+                }}
+                onKeyUp={(e) => {
+                    if (e.keyCode === 13) {
+                        searchData = [searchType, e.currentTarget.value];
+                        console.log(searchData);
+                        searchData$.next(searchData);
+                    }
                 }}
             />
             <button
