@@ -1,4 +1,4 @@
-ul {
+.main-content {
     position: relative;
     padding: 0 40px 0 40px;
 }
@@ -14,3 +14,25 @@ ul {
     /* position: absolute; */
     width: 80%;
 }
+
+// .fade-appear {
+//     opacity: 0;
+//     transform: scale(0.9);
+// }
+
+// .fade-appear-active {
+//     opacity: 1;
+//     transform: translateX(0);
+//     transition: opacity 500ms, transform 500ms;
+// }
+
+// .fade-exit {
+//     opacity: 1;
+// }
+
+// .fade-exit-active {
+//     opacity: 0;
+//     transform: scale(0.9);
+//     transition: opacity 500ms, transform 500ms;
+// }
+

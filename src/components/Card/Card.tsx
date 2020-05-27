@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 import './Card.scss';
+import shortid from "shortid";
 
 const Card: FC<{id: string, passRef?: any, head: (string | undefined)[], body: string[] | string | undefined, notes?: string[], foot?: string}> = (props: any) => {
     return (
       <div className="card-container" ref={props.passRef} id={props.id}>
-        <div className="card">
+        <div className="card"  key={shortid.generate()}>
           <div className="card-head">
             <blockquote className="title">{props.head[0]}</blockquote>
             {/* <br/> */}

@@ -1,8 +1,9 @@
 import React, { FC, useContext, useEffect, useRef } from "react";
+// import { CSSTransition } from "react-transition-group";
 import { VisibleContext } from "../../App";
+import { Poetry } from "../../model/data";
 import Card from "../Card/Card";
 import "./SlidingWindowScroll.scss";
-import { Poetry } from "../../model/data";
 
 const SlidingWindowScroll: FC<{
     data: any;
@@ -81,49 +82,16 @@ const SlidingWindowScroll: FC<{
     };
 
     return (
-        <ul>
-            {props.data.map((item: Poetry, index: number) => {
-                // const top = (props.height * (index + start)) + 'px';
-                const refVal = getReference(index, index === lastIndex);
-                const id =
-                    index === 0 ? "top" : index === lastIndex ? "bottom" : "";
-
-                const head = (): (string | undefined)[] => {
-                    if (!item.title && item.rhythmic) {
-                        return [item.rhythmic, item.author];
-                    } else if (!item.title && !item.rhythmic && item.chapter) {
-                        return [item.chapter, item.author];
-                    } else if (item.title && item.chapter && item.section) {
-                        return [item.chapter + "·" + item.section, item.title];
-                    } else {
-                        return [item.title, item.author];
-                    }
-                };
-                const body = (): string[] | undefined => {
-                    if (!item.paragraphs) {
-                        return item.content;
-                    } else {
-                        return item.paragraphs;
-                    }
-                };
-                // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                return (
-                    // props.list.map((shi: Shi) => (
-                    <Card
-                        key={index}
-                        id={id}
-                        head={head()}
-                        body={body()}
-                        notes={item.notes}
-                        passRef={refVal}
-                    ></Card>
-
-                    //   ))
-                    // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                );
-            })}
-            {/* {props.category === "shi" &&
-                props.data.map((item: Shi, index: number) => {
+        <div className="ul-container">
+            {/* <CSSTransition
+                in={true}
+                timeout={500}
+                classNames="fade"
+                appear={true}
+                unmountOnExit
+            > */}
+            <ul className="main-content">
+                {props.data.map((item: Poetry, index: number) => {
                     // const top = (props.height * (index + start)) + 'px';
                     const refVal = getReference(index, index === lastIndex);
                     const id =
@@ -132,14 +100,41 @@ const SlidingWindowScroll: FC<{
                             : index === lastIndex
                             ? "bottom"
                             : "";
+
+                    const head = (): (string | undefined)[] => {
+                        if (!item.title && item.rhythmic) {
+                            return [item.rhythmic, item.author];
+                        } else if (
+                            !item.title &&
+                            !item.rhythmic &&
+                            item.chapter
+                        ) {
+                            return [item.chapter, item.author];
+                        } else if (item.title && item.chapter && item.section) {
+                            return [
+                                item.chapter + "·" + item.section,
+                                item.title,
+                            ];
+                        } else {
+                            return [item.title, item.author];
+                        }
+                    };
+                    const body = (): string[] | undefined => {
+                        if (!item.paragraphs) {
+                            return item.content;
+                        } else {
+                            return item.paragraphs;
+                        }
+                    };
                     // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
                     return (
                         // props.list.map((shi: Shi) => (
                         <Card
                             key={index}
                             id={id}
-                            head={[item.title, item.author]}
-                            body={item.paragraphs}
+                            head={head()}
+                            body={body()}
+                            notes={item.notes}
                             passRef={refVal}
                         ></Card>
 
@@ -147,59 +142,9 @@ const SlidingWindowScroll: FC<{
                         // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
                     );
                 })}
-
-            {props.category === "ci" &&
-                props.data.map((item: Ci, index: number) => {
-                    // const top = (props.height * (index + start)) + 'px';
-                    const refVal = getReference(index, index === lastIndex);
-                    const id =
-                        index === 0
-                            ? "top"
-                            : index === lastIndex
-                            ? "bottom"
-                            : "";
-                    // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                    return (
-                        // props.list.map((shi: Shi) => (
-                        <Card
-                            key={index}
-                            id={id}
-                            head={[item.rhythmic, item.author]}
-                            body={item.paragraphs}
-                            passRef={refVal}
-                        ></Card>
-
-                        //   ))
-                        // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                    );
-                })}
-
-            {props.category === "qu" &&
-                props.data.map((item: Qu, index: number) => {
-                    // const top = (props.height * (index + start)) + 'px';
-                    const refVal = getReference(index, index === lastIndex);
-                    const id =
-                        index === 0
-                            ? "top"
-                            : index === lastIndex
-                            ? "bottom"
-                            : "";
-                    // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
-                    return (
-                        // props.list.map((shi: Shi) => (
-                        <Card
-                            key={index}
-                            id={id}
-                            head={[item.title, item.author]}
-                            body={item.paragraphs}
-                            passRef={refVal}
-                        ></Card>
-
-                        //   ))
-                        // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>
-                    );
-                })} */}
-        </ul>
+            </ul>
+            {/* </CSSTransition> */}
+        </div>
     );
 };
 
