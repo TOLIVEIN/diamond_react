@@ -10,7 +10,8 @@
 ## Github Actions to CI/CD.
 * Now just the frontend.
 
-## Data source is [Chinese Poetry repo](https://github.com/chinese-poetry/chinese-poetry).
+## Data source is Chinese Poetry repo
+* [Chinese poetry](https://github.com/chinese-poetry/chinese-poetry) repo.
 
 ## To run in local
 1. `git clone git@github.com:TOLIVEIN/diamond_react.git`
