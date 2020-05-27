@@ -7,7 +7,6 @@ const Header: FC = () => {
     return (
         <div>
             <h1>S · C · Q</h1>
-
             <Search></Search>
 
             {/* <ScrollLoad></ScrollLoad> */}
