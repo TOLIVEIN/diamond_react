@@ -14,20 +14,12 @@ const TopJumper: FC<{}> = (props) => {
             throttleTime(1000)
         );
         scroll.subscribe((currentY) => {
-            // console.log("Y*********", window.scrollY, currentY, previousY);
             const shouldShow =
                 window.scrollY > 1000 && currentY - previousY > 0;
-            // console.log(
-            //     "********************, shouldShow: " +
-            //         shouldShow +
-            //         ", show: " +
-            //         show
-            // );
             if (shouldShow !== show) {
                 setShow(shouldShow);
                 setPreviousY(currentY);
             }
-            // setShow(true);
         });
     }, [previousY, show]);
 
@@ -37,7 +29,6 @@ const TopJumper: FC<{}> = (props) => {
                 className="top-jumper"
                 onClick={() => {
                     window.scrollTo(0, 0);
-                    // setShow(false);
                 }}
             >
                 <span className="text"></span>

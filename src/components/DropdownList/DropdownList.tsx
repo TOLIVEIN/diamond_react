@@ -1,42 +1,16 @@
 import React, { FC, useState } from "react";
-import "./DropdownList.scss";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Subject } from "rxjs";
+import "./DropdownList.scss";
 
 const DropdownList: FC<{ items: string[] }> = (props) => {
     const [type, setType] = useState("作者");
 
-    // let type = "作者";
-
     return (
         <>
             {/* <FontAwesomeIcon icon="angle-down"></FontAwesomeIcon> */}
-            {/* <select
-                className="drop-list"
-                id="drop-list"
-                value="作者"
-                onChange={(e) => {
-                    searchType$.next(e.target.value);
-                }}
-            >
-                {props.items.map((item: string, index: number) => {
-                    return (
-                        <option key={index} value={item}>
-                            {item}
-                        </option>
-                    );
-                })}
-            </select> */}
-
             <div className="drop-list">
-                <button
-                    className="drop-button"
-                    value={type}
-
-                    // onChange={(e) => {
-                    //     searchType$.next(type);
-                    // }}
-                >
+                <button className="drop-button" value={type}>
                     {type}
                 </button>
                 <div className="drop-content">
@@ -49,8 +23,10 @@ const DropdownList: FC<{ items: string[] }> = (props) => {
                                 onClick={(e) => {
                                     setType(e.currentTarget.value);
                                     searchType$.next(e.currentTarget.value);
-                                    console.log('drop item:', e.currentTarget.value)
-                                    // searchType$.next(e.target.innerHTML);
+                                    console.log(
+                                        "drop item:",
+                                        e.currentTarget.value
+                                    );
                                 }}
                             >
                                 {item}
@@ -59,19 +35,6 @@ const DropdownList: FC<{ items: string[] }> = (props) => {
                     })}
                 </div>
             </div>
-
-            {/* <div className="drop-list">
-                <button className="drop-button">作者</button>
-                <div className="drop-content">
-                {props.items.map((item: string, index: number) => {
-                    return (
-                        <a key={index} href="drop-item">
-                            {item}
-                        </a>
-                    );
-                })}
-                </div>
-            </div> */}
         </>
     );
 };

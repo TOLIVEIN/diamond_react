@@ -21,7 +21,7 @@ const SlidingWindowScroll: FC<{
     const lastIndex: number = props.data.length - 1;
 
     useEffect(() => {
-        console.log("sliding effect......, data: ", props.data);
+        // console.log("sliding effect......, data: ", props.data);
         initiateScrollObserver();
         // return () => {
         //     resetObservation();

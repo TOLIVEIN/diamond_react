@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/";
+const baseUrl = "http://101.200.216.231:8080/";
+// const baseUrl = "http://localhost:8080"
 
-// const shiUrl = baseUrl + 'shi';
-// const ciUrl = baseUrl + 'ci';
-// const quUrl = baseUrl + 'qu';
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,

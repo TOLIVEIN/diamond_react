@@ -1,14 +1,12 @@
 import React, { FC, useState } from "react";
-import "./Sider.scss";
 import { Subject } from "rxjs";
 import { navItem } from "../../config/property";
+import "./Sider.scss";
 
 const Sider: FC = () => {
     const [buttonState, setButtonState] = useState(
         [...Array(navItem.length)].map((_) => false)
     );
-
-    // const category$ = new Subject();
 
     return (
         <div className="menu">
@@ -31,10 +29,7 @@ const Sider: FC = () => {
                                             })
                                         );
 
-                                        // const category$ = new Subject<string>();
                                         category$.next(item[0]);
-                                        // category$.complete();
-                                        // console.log("类别：", item[1]);
                                     }}
                                 >
                                     {item[1]}
@@ -46,6 +41,5 @@ const Sider: FC = () => {
         </div>
     );
 };
-// export category$;
 export const category$ = new Subject<string>();
 export default Sider;
