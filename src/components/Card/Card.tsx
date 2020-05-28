@@ -1,9 +1,10 @@
 import React, { FC, useState } from "react";
+// import { AiOutlineInfoCircle } from "react-icons/all";
 import shortid from "shortid";
-import Detail from "../Detail/Detail";
-import "./Card.scss";
 import { exchangeSC } from "../../config/utils";
 import { PoetryDetail } from "../../model/data";
+import Detail from "../Detail/Detail";
+import "./Card.scss";
 
 const Card: FC<{
     id: string;
@@ -49,7 +50,7 @@ const Card: FC<{
         }
 
         setVisible(!visible);
-    }
+    };
 
     return (
         <div className="card-container" ref={props.passRef} id={props.id}>
@@ -57,42 +58,25 @@ const Card: FC<{
                 className="card"
                 id="card"
                 key={shortid.generate()}
+                onClick={(e) => {
+                    if (e.target === e.currentTarget) {
+                        showDetail();
+                    }
+                }}
             >
-                <button
-                    className="detail-button"
+                {/* <AiOutlineInfoCircle
+                    style={{ fontSize: 30 }}
+                    className="detail-icon"
                     onClick={showDetail}
-                >
-                    detail
-                </button>
+                ></AiOutlineInfoCircle> */}
                 <Detail
                     visible={visible}
-                    // buttons={[
-                    //     <button
-                    //         onClick={() => {
-                    //             setVisible(false);
-                    //             setDetail(initialDetail);
-                    //         }}
-                    //     >
-                    //         1
-                    //     </button>,
-                    //     <button
-                    //         onClick={() => {
-                    //             setVisible(false);
-                    //             setDetail(initialDetail);
-                    //         }}
-                    //     >
-                    //         2
-                    //     </button>,
-                    // ]}
                     onClose={() => {
                         setVisible(false);
                         setDetail(initialDetail);
-
                     }}
                     detail={detail}
-                >
-                    {/* <strong>{[detail.head, detail.body, detail.notes]}</strong> */}
-                </Detail>
+                ></Detail>
                 <div className="card-head">
                     <blockquote className="title">{props.head[0]}</blockquote>
                     <blockquote className="author">{props.head[1]}</blockquote>

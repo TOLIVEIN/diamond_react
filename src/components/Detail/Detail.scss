@@ -7,7 +7,7 @@
     position: fixed;
     background: white;
     min-width: 80vw;
-    min-height: 60vh;
+    min-height: 80vh;
     z-index: 2;
     border-radius: 4px;
     top: 50%;
@@ -31,16 +31,18 @@
     }
 }
 
-.direction-button {
+.direction-icon {
     position: absolute;
     left: 20px;
     top: 20px;
+    cursor: pointer;
 }
 
-.close-button{
+.close-icon{
     position: absolute;
     right: 20px;
     top: 20px;
+    cursor: pointer;
 }
 
 .detail-content {

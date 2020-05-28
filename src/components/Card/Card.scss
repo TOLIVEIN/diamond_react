@@ -39,15 +39,7 @@
 
 .card-head {
   font-weight: bold;
-  // display: flex;
-  // // justify-content: center;
-  // align-items: center;
-  // flex-direction: column;
-  // max-width: 50%;
   cursor: auto;
-  // max-width: 50%;
-
-  // cursor: auto;
 }
 
 .card-head .title {
@@ -55,34 +47,23 @@
 }
 
 .card-body {
-  // display: flex;
-  // // justify-content: center;
-  // align-items: center;
-  // flex-direction: column;
-  // max-width: 50%;
   cursor: auto;
-
-
 }
 
 .card-footer {
-  // display: flex;
-  // // justify-content: center;
-  // align-items: center;
-  // flex-direction: column;
-  // max-width: 50%;
   cursor: auto;
-
 }
 
-.detail-button {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-}
+// .detail-icon {
+//   position: absolute;
+//   right: 20px;
+//   top: 20px;
+// }
+
 blockquote {
   margin: 16px;
 }
+
 // .card-body {
 //   cursor: auto;
 // }

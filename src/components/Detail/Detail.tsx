@@ -1,5 +1,6 @@
 import React, { cloneElement, FC, MouseEventHandler, ReactElement, useState } from "react";
 import { createPortal } from "react-dom";
+import { AiOutlineCloseCircle, AiOutlineSwitcher } from "react-icons/all";
 import { PoetryDetail } from "../../model/data";
 import "./Detail.scss";
 
@@ -32,8 +33,9 @@ const Detail: FC<{
         <div className={scopedClass("container")}>
             <div className={scopedClass("mask")} onClick={onClickMask}></div>
             <div className={scopedClass()}>
-                <button
-                    className="direction-button"
+                <AiOutlineSwitcher
+                    className="direction-icon"
+                    style={{ fontSize: 40 }}
                     onClick={(e) => {
                         if (!horizontal) {
                             document
@@ -54,10 +56,13 @@ const Detail: FC<{
                         }
                         setHorizontal(!horizontal);
                     }}
-                >
-                    切换显示方式
-                </button>
-                <button className="close-button" onClick={onClickClose}>关闭</button>
+                ></AiOutlineSwitcher>
+
+                <AiOutlineCloseCircle
+                    className="close-icon"
+                    onClick={onClickClose}
+                    style={{ fontSize: 40 }}
+                ></AiOutlineCloseCircle>
                 <div className={scopedClass("content")}>
                     <div
                         className={scopedClass("close")}
@@ -70,6 +75,7 @@ const Detail: FC<{
                             return <blockquote key={i}>{h}</blockquote>;
                         })}
                     </header>
+                    <br></br>
                     <main className={scopedClass("main")}>
                         {props.detail.body.map((b, i) => {
                             return <blockquote key={i}>{b}</blockquote>;
