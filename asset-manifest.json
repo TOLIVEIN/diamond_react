@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/diamond_react/static/css/main.5310783d.chunk.css",
-    "main.js": "/diamond_react/static/js/main.9af72f83.chunk.js",
-    "main.js.map": "/diamond_react/static/js/main.9af72f83.chunk.js.map",
+    "main.css": "/diamond_react/static/css/main.cd71ff82.chunk.css",
+    "main.js": "/diamond_react/static/js/main.b5f5df1b.chunk.js",
+    "main.js.map": "/diamond_react/static/js/main.b5f5df1b.chunk.js.map",
     "runtime-main.js": "/diamond_react/static/js/runtime-main.4834fd0b.js",
     "runtime-main.js.map": "/diamond_react/static/js/runtime-main.4834fd0b.js.map",
     "static/js/2.7f66e106.chunk.js": "/diamond_react/static/js/2.7f66e106.chunk.js",
     "static/js/2.7f66e106.chunk.js.map": "/diamond_react/static/js/2.7f66e106.chunk.js.map",
     "index.html": "/diamond_react/index.html",
-    "precache-manifest.1dbdb3964734a84be18cd941c9169c4f.js": "/diamond_react/precache-manifest.1dbdb3964734a84be18cd941c9169c4f.js",
+    "precache-manifest.f031ce72069271528910626cca9454f2.js": "/diamond_react/precache-manifest.f031ce72069271528910626cca9454f2.js",
     "service-worker.js": "/diamond_react/service-worker.js",
-    "static/css/main.5310783d.chunk.css.map": "/diamond_react/static/css/main.5310783d.chunk.css.map",
+    "static/css/main.cd71ff82.chunk.css.map": "/diamond_react/static/css/main.cd71ff82.chunk.css.map",
     "static/js/2.7f66e106.chunk.js.LICENSE.txt": "/diamond_react/static/js/2.7f66e106.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4834fd0b.js",
     "static/js/2.7f66e106.chunk.js",
-    "static/css/main.5310783d.chunk.css",
-    "static/js/main.9af72f83.chunk.js"
+    "static/css/main.cd71ff82.chunk.css",
+    "static/js/main.b5f5df1b.chunk.js"
   ]
 }
