@@ -28,26 +28,6 @@ export interface Poetry {
     abstract?: string;
 }
 
-// export interface Shi {
-//     id: string;
-//     title: string;
-//     author: string;
-//     paragraphs: string[];
-// };
-
-// export interface Ci {
-//     rhythmic: string;
-//     author: string;
-//     paragraphs: string[];
-// }
-
-// export interface Qu {
-//     dynasty: string;
-//     title: string;
-//     author: string;
-//     paragraphs: string[];
-// }
-
 export interface Page {
     sort: Sort;
     offset: number;

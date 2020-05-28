@@ -1,24 +1,24 @@
 import { Sort, Page } from "./data";
 
 export const initialSort: Sort = {
-  sorted: false,
-  unsorted: false,
-  empty: false
+    sorted: false,
+    unsorted: false,
+    empty: false,
 };
 
 export const initialPage: Page = {
-  sort: initialSort,
-  offset: 0,
-  pageNumber: 0,
-  pageSize: 0,
-  unpaged: false,
-  paged: false
+    sort: initialSort,
+    offset: 0,
+    pageNumber: 0,
+    pageSize: 0,
+    unpaged: false,
+    paged: false,
 };
 
 export enum DataType {
-  Shi,
-  Ci,
-  Qu
+    Shi,
+    Ci,
+    Qu,
 }
 
 // export const initialShi: Shi[] = [

@@ -1,4 +1,5 @@
-import { traditional, simplified } from "./property";
+import { simplified, traditional } from "./property";
+
 export const exchangeTC = (text: string) => {
     const exchangedText = Array.from(text)
         .map((t) => {
@@ -6,7 +7,8 @@ export const exchangeTC = (text: string) => {
             if (index === -1) {
                 return t;
             } else return traditional[index];
-        }).join('');
+        })
+        .join("");
     // console.log(`exchangedText: ${exchangedText}`);
     return exchangedText;
 };
@@ -18,16 +20,8 @@ export const exchangeSC = (text: string) => {
             if (index === -1) {
                 return t;
             } else return simplified[index];
-        }).join('');
+        })
+        .join("");
     // console.log(`exchangedText: ${exchangedText}`);
     return exchangedText;
 };
-// Array.from(text)
-//     .map((t) => {
-//         const index = simplified.indexOf(t);
-//         console.log(`index: ${index}`)
-//         const x = traditional[index];
-//         console.log(`x: ${x}`);
-//         return x;
-//     })
-//     .toString();
