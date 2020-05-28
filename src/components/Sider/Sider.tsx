@@ -5,7 +5,12 @@ import "./Sider.scss";
 
 const Sider: FC = () => {
     const [buttonState, setButtonState] = useState(
-        [...Array(navItem.length)].map((_) => false)
+        [...Array(navItem.length)].map((x, i) => {
+            if (i === 0) {
+                return true
+            }
+            return false
+        })
     );
 
     return (

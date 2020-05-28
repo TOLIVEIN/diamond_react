@@ -42,3 +42,9 @@ export interface Sort {
     unsorted: boolean;
     empty: boolean;
 }
+
+export interface PoetryDetail {
+    head: Array<string>;
+    body: Array<string>;
+    notes: Array<string>;
+}

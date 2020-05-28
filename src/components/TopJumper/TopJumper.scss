@@ -19,5 +19,6 @@
 
   &:hover:before {
     content: '回顶部';
+    cursor: pointer;
   }
 }

@@ -1,0 +1,93 @@
+.detail-container {
+    display: flex;
+    justify-content: center;
+}
+
+.detail {
+    position: fixed;
+    background: white;
+    min-width: 80vw;
+    min-height: 60vh;
+    z-index: 2;
+    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($color: #fff, $alpha: 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "MaShanZheng-Regular";
+
+    &-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: fade_out(black, 0.5);
+        z-index: 1;
+    }
+}
+
+.direction-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.close-button{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.detail-content {
+    margin: auto auto;
+    writing-mode: vertical-rl;
+}
+
+blockquote {
+    display: flex;
+    justify-content: center;
+}
+
+
+.detail-head {
+    blockquote:nth-child(1) {
+        font-size: 3vw;
+    }
+    blockquote:nth-child(2) {
+        font-size: 2vw;
+    }
+}
+
+.detail-main {
+    font-size: 2vw;
+}
+
+@font-face {
+    font-family: "MaShanZheng-Regular";
+    src: url("../../assets/fonts/MaShanZheng-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ZCOOLKuaiLe-Regular";
+    src: url("../../assets/fonts/ZCOOLKuaiLe-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "LiuJianMaoCao-Regular";
+    src: url("../../assets/fonts/LiuJianMaoCao-Regular.ttf") format("truetype");
+    // src: url('../../assets/fonts/fonts/LiuJianMaoCao-Regular.eot');
+    // src: url('../../assets/fonts/fonts/LiuJianMaoCao-Regular.eot?#iefix') format('embedded-opentype');
+    // src: url('../../assets/fonts/fonts/LiuJianMaoCao-Regular.woff') format('woff');
+    // src: url('../../assets/fonts/fonts/LiuJianMaoCao-Regular.svg#LiuJianMaoCao-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

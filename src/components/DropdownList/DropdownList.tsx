@@ -23,10 +23,10 @@ const DropdownList: FC<{ items: string[] }> = (props) => {
                                 onClick={(e) => {
                                     setType(e.currentTarget.value);
                                     searchType$.next(e.currentTarget.value);
-                                    console.log(
-                                        "drop item:",
-                                        e.currentTarget.value
-                                    );
+                                    // console.log(
+                                    //     "drop item:",
+                                    //     e.currentTarget.value
+                                    // );
                                 }}
                             >
                                 {item}

@@ -12,8 +12,10 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(1);
     const [category, setCategory] = useState("shi");
-
+    
+    const [reSearch, setReSearch] = useState(false);
     const [url, setUrl] = useState("shi/");
+
 
     useEffect(() => {
         // console.log("main effect......, page: ", page);
@@ -42,6 +44,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
 
             setData([]);
             setPage(0);
+            setReSearch(!reSearch);
             if (category === "ci" && data[0] === "title") {
                 setUrl(category + "/rhythmic/" + data[1]);
             } else setUrl(category + "/" + data.join("/"));
@@ -66,6 +69,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
                     return "fail";
                 })
                 .finally(() => {
+                    // setReSearch(false);
                     // console.log(
                     //     `after changing category, category:${category}, page:${page}, url:${url}`
                     // );
@@ -73,7 +77,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url, page]);
+    }, [url, page, reSearch]);
 
     return (
         <>

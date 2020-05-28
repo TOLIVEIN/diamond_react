@@ -19,7 +19,7 @@ const Search: FC<{ type?: string }> = (props) => {
                 (k) => searchItem[k] === type
             );
             setSearchType(key);
-            console.log("type:", key);
+            // console.log("type:", key);
         });
 
         searchText$

@@ -101,13 +101,14 @@ const SlidingWindowScroll: FC<{
                             ? "bottom"
                             : "";
 
-                    const head = (): (string | undefined)[] => {
-                        if (!item.title && item.rhythmic) {
+                    const head = (): string[] => {
+                        if (!item.title && item.rhythmic && item.author) {
                             return [item.rhythmic, item.author];
                         } else if (
                             !item.title &&
                             !item.rhythmic &&
-                            item.chapter
+                            item.chapter &&
+                            item.author
                         ) {
                             return [item.chapter, item.author];
                         } else if (item.title && item.chapter && item.section) {
@@ -115,9 +116,15 @@ const SlidingWindowScroll: FC<{
                                 item.chapter + "·" + item.section,
                                 item.title,
                             ];
-                        } else {
+                        } else if(item.title && item.author){
                             return [item.title, item.author];
-                        }
+                        } else if (                            !item.title &&
+                            !item.rhythmic &&
+                            item.chapter &&
+                            !item.author){
+                                return [item.chapter]
+                            }
+                            return []
                     };
                     const body = (): string[] | undefined => {
                         if (!item.paragraphs) {
