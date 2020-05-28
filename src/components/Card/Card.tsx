@@ -77,10 +77,16 @@ const Card: FC<{
                     }}
                     detail={detail}
                 ></Detail>
-                <div className="card-head">
-                    <blockquote className="title">{props.head[0]}</blockquote>
-                    <blockquote className="author">{props.head[1]}</blockquote>
-                </div>
+                {props.head.length !== 0 ? (
+                    <div className="card-head">
+                        <blockquote className="title">
+                            {props.head[0]}
+                        </blockquote>
+                        <blockquote className="author">
+                            {props.head[1]}
+                        </blockquote>
+                    </div>
+                ) : null}
 
                 <div className="card-body">
                     {props.body instanceof Array ? (
