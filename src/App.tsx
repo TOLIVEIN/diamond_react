@@ -24,10 +24,10 @@ const App: React.FC = () => {
                 <Header></Header>
             </header>
             <div className="content">
-                <div className="left-blank"></div>
                 <aside>
                     <Sider></Sider>
                 </aside>
+                {/* <div className="left-blank"></div> */}
                 <article>
                     <VisibleContext.Provider value={setVisible}>
                         <Main setVisible={setVisible}></Main>
@@ -38,7 +38,7 @@ const App: React.FC = () => {
                     <TopJumper></TopJumper>
                     {/* <Sider></Sider> */}
                 </aside>
-                <div className="right-blank"></div>
+                {/* <div className="right-blank"></div> */}
             </div>
             <footer>
                 <Footer visible={visible}></Footer>

@@ -2,9 +2,9 @@
 .App {
   text-align: center;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 1;
+  // display: flex;
+  // flex-direction: column;
+  // flex-shrink: 1;
 }
 
 // header {
@@ -23,7 +23,9 @@
 }
 
 .content article {
-  flex: 3;
+  flex: 6;
+  // min-width: 50%;
+  max-width: 40vw;
 }
 
 
@@ -34,9 +36,10 @@
 } */
 
 .content aside {
-  /* position: fixed; */
   display: flex;
   flex: 1;
+  // position: fixed;
+  // left: 10%;
   /* background-color: rgb(179, 179, 179); */
   /* border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .3); */
@@ -46,7 +49,7 @@
   flex: 2;
 }
 .right-blank {
-  flex: 2;
+  flex: 1;
 }
 
 html {
