@@ -34,8 +34,10 @@ const Search: FC<{ type?: string }> = (props) => {
 
     return (
         <div className="search">
-            <div className="header-left"></div>
+            {/* <div className="header-left"></div> */}
             <DropdownList items={items}></DropdownList>
+            <div className="search-content-container">
+
             <input
                 className="search-content"
                 type="text"
@@ -51,17 +53,20 @@ const Search: FC<{ type?: string }> = (props) => {
                     }
                 }}
             />
-            <button
-                className="search-button"
-                onClick={(e) => {
-                    searchData = [searchType, searchText];
-                    // console.log(searchData);
-                    searchData$.next(searchData);
-                }}
-            >
-                搜索
-            </button>
-            <div className="header-right"></div>
+            </div>
+            <div className="search-button-container">
+                <button
+                    className="search-button"
+                    onClick={(e) => {
+                        searchData = [searchType, searchText];
+                        // console.log(searchData);
+                        searchData$.next(searchData);
+                    }}
+                >
+                    搜索
+                </button>
+            </div>
+            {/* <div className="header-right"></div> */}
         </div>
     );
 };

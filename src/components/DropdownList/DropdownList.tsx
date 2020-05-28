@@ -3,11 +3,11 @@ import React, { FC, useState } from "react";
 import { Subject } from "rxjs";
 import "./DropdownList.scss";
 
-const DropdownList: FC<{ items: string[] }> = (props) => {
+const DropdownList: FC<{ items: string[] , className?: string}> = (props) => {
     const [type, setType] = useState("作者");
 
     return (
-        <>
+        <div className="drop-container">
             {/* <FontAwesomeIcon icon="angle-down"></FontAwesomeIcon> */}
             <div className="drop-list">
                 <button className="drop-button" value={type}>
@@ -35,7 +35,7 @@ const DropdownList: FC<{ items: string[] }> = (props) => {
                     })}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 export const searchType$ = new Subject<string>();
