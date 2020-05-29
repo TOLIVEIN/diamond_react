@@ -11,7 +11,7 @@ const Detail: FC<{
     closeOnClickMask?: boolean;
     detail: PoetryDetail;
 }> = (props) => {
-    const [horizontal, setHorizontal] = useState(false);
+    const [horizontal, setHorizontal] = useState(true);
     const scopedClassMaker = (prefix: string) => {
         return (name?: string) => {
             return [prefix, name].filter(Boolean).join("-");

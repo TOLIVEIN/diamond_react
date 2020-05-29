@@ -1,3 +1,31 @@
-h1 {
+cite {
     text-align: center;
+    font-family: "Flavors-Regular";
+    font-size: 5vh;
+}
+
+.description-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+span.description {
+    text-align: right;
+    font-family: "Charmonman-Bold";
+    margin-right: 10vw;
+    font-size: 2vh;
+}
+
+@font-face {
+    font-family: "Flavors-Regular";
+    src: url("../../assets/fonts/Flavors-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Charmonman-Bold";
+    src: url("../../assets/fonts/Charmonman-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }

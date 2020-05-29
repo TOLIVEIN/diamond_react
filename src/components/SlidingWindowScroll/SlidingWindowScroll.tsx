@@ -126,6 +126,13 @@ const SlidingWindowScroll: FC<{
                             }
                             return []
                     };
+
+                    const author = ():string | undefined => {
+                        if (item.author) {
+                            return item.author;
+                        }
+                    }
+
                     const body = (): string[] | undefined => {
                         if (!item.paragraphs) {
                             return item.content;
@@ -141,6 +148,7 @@ const SlidingWindowScroll: FC<{
                             id={id}
                             head={head()}
                             body={body()}
+                            author={author()}
                             notes={item.notes}
                             passRef={refVal}
                         ></Card>

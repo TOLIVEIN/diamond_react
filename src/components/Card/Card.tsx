@@ -12,6 +12,7 @@ const Card: FC<{
     head: string[];
     body: string[] | string | undefined;
     notes?: string[];
+    author?: string;
     foot?: string;
 }> = (props: any) => {
     const [visible, setVisible] = useState(false);
@@ -23,6 +24,7 @@ const Card: FC<{
     };
     const [detail, setDetail] = useState<PoetryDetail>(initialDetail);
 
+    // console.log(`author: ${props.author}`);
     const showDetail = () => {
         if (props.head) {
             props.head.forEach((element: string) => {
@@ -30,7 +32,6 @@ const Card: FC<{
                 detail.head.push(exchangeSC(element));
             });
         }
-        // console.log(`detail head: ${detail.head}`);
 
         if (props.body) {
             props.body.forEach((element: string) => {
@@ -83,7 +84,19 @@ const Card: FC<{
                             {props.head[0]}
                         </blockquote>
                         <blockquote className="author">
-                            {props.head[1]}
+                            {props.author ? (
+                                <button
+                                    className="author-button"
+                                    onClick={() => {
+                                        // console.log(`author: ${props.author}`);
+                                    }}
+                                >
+                                    {props.author}
+                                </button>
+                            ) : (
+                                props.head[1]
+                            )}
+                            {/* {props.head[1]} */}
                         </blockquote>
                     </div>
                 ) : null}

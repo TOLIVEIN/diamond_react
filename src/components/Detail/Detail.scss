@@ -16,6 +16,26 @@
     }
 }
 
+@-moz-keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .detail {
     position: fixed;
     background: white;
@@ -23,9 +43,13 @@
     min-height: 80vh;
     z-index: 2;
     border-radius: 4px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 10vh;
+    left: 10vw;
+    right: 10vw;
+    bottom: 10vh;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
     background-color: rgba($color: #fff, $alpha: 0.7);
     display: flex;
     flex-direction: column;
@@ -64,7 +88,7 @@
 
 .detail-content {
     margin: auto auto;
-    writing-mode: vertical-rl;
+    // writing-mode: vertical-rl;
 }
 
 blockquote {
