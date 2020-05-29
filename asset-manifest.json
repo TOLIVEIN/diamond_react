@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/diamond_react/static/css/main.ba114028.chunk.css",
-    "main.js": "/diamond_react/static/js/main.f69399cd.chunk.js",
-    "main.js.map": "/diamond_react/static/js/main.f69399cd.chunk.js.map",
+    "main.css": "/diamond_react/static/css/main.cd8cdc31.chunk.css",
+    "main.js": "/diamond_react/static/js/main.1ebd15bc.chunk.js",
+    "main.js.map": "/diamond_react/static/js/main.1ebd15bc.chunk.js.map",
     "runtime-main.js": "/diamond_react/static/js/runtime-main.4834fd0b.js",
     "runtime-main.js.map": "/diamond_react/static/js/runtime-main.4834fd0b.js.map",
     "static/js/2.b0fa77e8.chunk.js": "/diamond_react/static/js/2.b0fa77e8.chunk.js",
     "static/js/2.b0fa77e8.chunk.js.map": "/diamond_react/static/js/2.b0fa77e8.chunk.js.map",
     "index.html": "/diamond_react/index.html",
-    "precache-manifest.7d5c2d9ccd4f362b1c90d5926e4e7e3d.js": "/diamond_react/precache-manifest.7d5c2d9ccd4f362b1c90d5926e4e7e3d.js",
+    "precache-manifest.9b3b21524a873c53f4444aadf85f1df1.js": "/diamond_react/precache-manifest.9b3b21524a873c53f4444aadf85f1df1.js",
     "service-worker.js": "/diamond_react/service-worker.js",
-    "static/css/main.ba114028.chunk.css.map": "/diamond_react/static/css/main.ba114028.chunk.css.map",
+    "static/css/main.cd8cdc31.chunk.css.map": "/diamond_react/static/css/main.cd8cdc31.chunk.css.map",
     "static/js/2.b0fa77e8.chunk.js.LICENSE.txt": "/diamond_react/static/js/2.b0fa77e8.chunk.js.LICENSE.txt",
+    "static/media/Header.scss": "/diamond_react/static/media/Flavors-Regular.5c2050b1.ttf",
     "static/media/Detail.scss": "/diamond_react/static/media/ZCOOLKuaiLe-Regular.1b80e6af.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.4834fd0b.js",
     "static/js/2.b0fa77e8.chunk.js",
-    "static/css/main.ba114028.chunk.css",
-    "static/js/main.f69399cd.chunk.js"
+    "static/css/main.cd8cdc31.chunk.css",
+    "static/js/main.1ebd15bc.chunk.js"
   ]
 }
