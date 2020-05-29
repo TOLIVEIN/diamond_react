@@ -1,6 +1,7 @@
 ## Chinese Poetry Frontend
 * You can see my web page [**HERE**](https://tolivein.github.io/diamond_react/), I just deploy it to [Github Pages](https://pages.github.com/)
-* Since I haven't config the cert, it will show "unsafe", you can manage to access it, I believe.
+* ~~Since I haven't config the cert, it will show "unsafe", you can manage to access it, I believe.~~
+* Now can access the page safely, I believe so.
 * **The backend repo is now private......**
 * Although now the web page is simple, I'll continue to improve it.
 
