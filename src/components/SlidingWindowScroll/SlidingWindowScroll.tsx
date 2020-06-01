@@ -11,6 +11,7 @@ const SlidingWindowScroll: FC<{
     page: number;
     setPage: any;
     category: string;
+    totalPage: number;
 }> = (props) => {
     // const [observer, setObserver] = useState<IntersectionObserver>();
     const visibleContext = useContext(VisibleContext); //useless
@@ -19,6 +20,7 @@ const SlidingWindowScroll: FC<{
     const $topElement: any = useRef();
 
     const lastIndex: number = props.data.length - 1;
+
 
     useEffect(() => {
         // console.log("sliding effect......, data: ", props.data);
@@ -50,7 +52,7 @@ const SlidingWindowScroll: FC<{
 
     const callback = (entries: any[], observer: any) => {
         entries.forEach((entry: any, index: any) => {
-            if (entry.isIntersecting && entry.target.id === "bottom") {
+            if (entry.isIntersecting && entry.target.id === "bottom" && props.page < props.totalPage) {
                 // console.log('bottom enter.');
                 props.setPage(props.page + 1);
 
@@ -116,22 +118,24 @@ const SlidingWindowScroll: FC<{
                                 item.chapter + "·" + item.section,
                                 item.title,
                             ];
-                        } else if(item.title && item.author){
+                        } else if (item.title && item.author) {
                             return [item.title, item.author];
-                        } else if (                            !item.title &&
+                        } else if (
+                            !item.title &&
                             !item.rhythmic &&
                             item.chapter &&
-                            !item.author){
-                                return [item.chapter]
-                            }
-                            return []
+                            !item.author
+                        ) {
+                            return [item.chapter];
+                        }
+                        return [];
                     };
 
-                    const author = ():string | undefined => {
+                    const author = (): string | undefined => {
                         if (item.author) {
                             return item.author;
                         }
-                    }
+                    };
 
                     const body = (): string[] | undefined => {
                         if (!item.paragraphs) {
@@ -143,15 +147,17 @@ const SlidingWindowScroll: FC<{
                     // console.log(`top: ${top}, index: ${index}, lastIndex: ${lastIndex}, refVal: ${refVal}, id: ${id}`);
                     return (
                         // props.list.map((shi: Shi) => (
-                        <Card
-                            key={index}
-                            id={id}
-                            head={head()}
-                            body={body()}
-                            author={author()}
-                            notes={item.notes}
-                            passRef={refVal}
-                        ></Card>
+                        // <div>
+                            <Card
+                                key={index}
+                                id={id}
+                                head={head()}
+                                body={body()}
+                                author={author()}
+                                notes={item.notes}
+                                passRef={refVal}
+                            ></Card>
+                        // </div>
 
                         //   ))
                         // <li className="li-card" key={index} ref={refVal} id={id}>{`${item.title} ${item.author} ${item.paragraphs}`}</li>

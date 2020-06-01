@@ -17,12 +17,12 @@
   flex-direction: column;
 } */
 
-.content {
+.content-container {
   flex: auto;
   display: flex;
 }
 
-.content article {
+.content-container article {
   flex: 6;
 }
 
@@ -33,7 +33,7 @@
   height: 100%;
 } */
 
-.content aside {
+.content-container aside {
   display: flex;
   flex: 1;
   // position: fixed;

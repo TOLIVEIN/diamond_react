@@ -48,3 +48,10 @@ export interface PoetryDetail {
     body: Array<string>;
     notes: Array<string>;
 }
+
+
+export interface Author {
+    id?: string;
+    name: string;
+    desc: string;
+}

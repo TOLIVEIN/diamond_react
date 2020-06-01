@@ -1,10 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
 // import { AiOutlineInfoCircle } from "react-icons/all";
 import shortid from "shortid";
 import { exchangeSC } from "../../config/utils";
 import { PoetryDetail } from "../../model/data";
 import Detail from "../Detail/Detail";
 import "./Card.scss";
+// import AuthorDetail from "../AuthorDetail/AuthorDetail";
+import { Subject } from 'rxjs';
+import { AuthorVisibleContext } from '../Main/Main';
+
 
 const Card: FC<{
     id: string;
@@ -14,8 +18,12 @@ const Card: FC<{
     notes?: string[];
     author?: string;
     foot?: string;
+    // setAuthorVisible?: boolean
 }> = (props: any) => {
     const [visible, setVisible] = useState(false);
+    // const [author, setAuthor] = useState('');
+
+    const authorVisibleContext = useContext(AuthorVisibleContext); //useless
 
     const initialDetail: PoetryDetail = {
         head: [],
@@ -78,6 +86,8 @@ const Card: FC<{
                     }}
                     detail={detail}
                 ></Detail>
+
+                {/* <AuthorDetail author={ {name: props.author, desc: "bbb"} } visible={authorVisible}></AuthorDetail> */}
                 {props.head.length !== 0 ? (
                     <div className="card-head">
                         <blockquote className="title">
@@ -87,7 +97,11 @@ const Card: FC<{
                             {props.author ? (
                                 <button
                                     className="author-button"
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        // setAuthorVisible(!authorVisible)
+                                        authorVisibleContext[1](!authorVisibleContext[0])
+                                        author$.next(props.author)
+                                        // props.setAuthorVisible(true)
                                         // console.log(`author: ${props.author}`);
                                     }}
                                 >
@@ -120,5 +134,5 @@ const Card: FC<{
         </div>
     );
 };
-
+export const author$: Subject<string> = new Subject();
 export default Card;

@@ -20,21 +20,21 @@ const App: React.FC = () => {
             <header>
                 <Header></Header>
             </header>
-            <div className="content">
-                <aside>
+            <div className="content-container">
+                <aside className="nav-bar">
                     <Sider></Sider>
                 </aside>
                 {/* <div className="left-blank"></div> */}
-                <article>
+                <article className="content">
                     <VisibleContext.Provider value={setVisible}>
                         <Main setVisible={setVisible}></Main>
                     </VisibleContext.Provider>
                 </article>
                 <aside>
                     {/* <BackTop visible={visible}></BackTop> */}
-                    <TopJumper></TopJumper>
                     {/* <Sider></Sider> */}
                 </aside>
+                    <TopJumper></TopJumper>
                 {/* <div className="right-blank"></div> */}
             </div>
             <footer>
