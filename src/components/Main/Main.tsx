@@ -1,21 +1,20 @@
-import React, { FC, useEffect, useState } from "react";
-import request from "../../apis/request";
-import { sctcItem } from "../../config/property";
-import { exchangeSC, exchangeTC } from "../../config/utils";
-import { searchData$ } from "../Search/Search";
-import { category$ } from "../Sider/Sider";
-import SlidingWindowScroll from "../SlidingWindowScroll/SlidingWindowScroll";
-import "./Main.less";
+import React, { FC, useEffect, useState } from 'react';
+import request from '../../apis/request';
+import { sctcItem } from '../../config/property';
+import { exchangeSC, exchangeTC } from '../../config/utils';
+import { searchData$ } from '../Search/Search';
+import { category$ } from '../Sider/Sider';
+import SlidingWindowScroll from '../SlidingWindowScroll/SlidingWindowScroll';
+import './Main.scss';
 
 const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     const [data, setData] = useState<any>([]);
     const [page, setPage] = useState(0);
     const [totalPage, setTotalPage] = useState(1);
-    const [category, setCategory] = useState("shi");
-    
-    const [reSearch, setReSearch] = useState(false);
-    const [url, setUrl] = useState("shi/");
+    const [category, setCategory] = useState('shi');
 
+    const [reSearch, setReSearch] = useState(false);
+    const [url, setUrl] = useState('shi/');
 
     useEffect(() => {
         // console.log("main effect......, page: ", page);
@@ -25,29 +24,23 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
                 setData([]);
                 setPage(0);
                 setCategory(cate);
-                setUrl(cate + "/");
+                setUrl(cate + '/');
             }
         });
 
         searchData$.subscribe((data: string[]) => {
-            if (
-                sctcItem.sc.indexOf(category) &&
-                /[\u4e00-\u9fa5]/g.test(data[1])
-            ) {
+            if (sctcItem.sc.indexOf(category) && /[\u4e00-\u9fa5]/g.test(data[1])) {
                 data[1] = exchangeTC(data[1]);
-            } else if (
-                sctcItem.tc.indexOf(category) &&
-                /[\u4e00-\u9fa5]/g.test(data[1])
-            ) {
+            } else if (sctcItem.tc.indexOf(category) && /[\u4e00-\u9fa5]/g.test(data[1])) {
                 data[1] = exchangeSC(data[1]);
             }
 
             setData([]);
             setPage(0);
             setReSearch(!reSearch);
-            if (category === "ci" && data[0] === "title") {
-                setUrl(category + "/rhythmic/" + data[1]);
-            } else setUrl(category + "/" + data.join("/"));
+            if (category === 'ci' && data[0] === 'title') {
+                setUrl(category + '/rhythmic/' + data[1]);
+            } else setUrl(category + '/' + data.join('/'));
         });
 
         if (page < totalPage) {
@@ -58,15 +51,11 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
                     // console.log(response.data);
                     setData(data.concat(response.data.content));
                     setPage(response.data.pageable.pageNumber);
-                    setTotalPage(
-                        response.data.totalPages === 0
-                            ? 1
-                            : response.data.totalPages
-                    );
+                    setTotalPage(response.data.totalPages === 0 ? 1 : response.data.totalPages);
                     // console.log("data: ", data);
                 })
                 .catch((error) => {
-                    return "fail";
+                    return 'fail';
                 })
                 .finally(() => {
                     // setReSearch(false);
@@ -82,13 +71,7 @@ const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     return (
         <>
             <div className="main-container">
-                <SlidingWindowScroll
-                    data={data}
-                    height={195}
-                    page={page}
-                    setPage={setPage}
-                    category={category}
-                ></SlidingWindowScroll>
+                <SlidingWindowScroll data={data} height={195} page={page} setPage={setPage} category={category}></SlidingWindowScroll>
             </div>
         </>
     );

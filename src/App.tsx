@@ -1,15 +1,13 @@
-import React, { createContext, Dispatch, useState } from "react";
-import "./App.less";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Sider from "./components/Sider/Sider";
+import React, { createContext, Dispatch, useState } from 'react';
+import './App.scss';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Sider from './components/Sider/Sider';
 // import BackTop from "./components/BackTop/BackTop";
-import TopJumper from "./components/TopJumper/TopJumper";
+import TopJumper from './components/TopJumper/TopJumper';
 
-export const VisibleContext = createContext(
-    {} as Dispatch<React.SetStateAction<boolean>>
-);
+export const VisibleContext = createContext({} as Dispatch<React.SetStateAction<boolean>>);
 
 const App: React.FC = () => {
     // const VisibleContext = createContext(setVisible);

@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import backtop from "../../assets/icons/backtop.png";
-import "./BackTop.less";
+import React, { FC } from 'react';
+import backtop from '../../assets/icons/backtop.png';
+import './BackTop.scss';
 
 const BackTop: FC<{ visible?: boolean }> = (props) => {
     return (

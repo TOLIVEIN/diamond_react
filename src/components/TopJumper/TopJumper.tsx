@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { fromEvent } from 'rxjs';
 import { filter, map, throttleTime } from 'rxjs/operators';
-import './TopJumper.less';
+import './TopJumper.scss';
 
 const TopJumper: FC<Record<string, unknown>> = (props) => {
     const [show, setShow] = useState(false);

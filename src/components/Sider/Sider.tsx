@@ -1,15 +1,15 @@
-import React, { FC, useState } from "react";
-import { Subject } from "rxjs";
-import { navItem } from "../../config/property";
-import "./Sider.less";
+import React, { FC, useState } from 'react';
+import { Subject } from 'rxjs';
+import { navItem } from '../../config/property';
+import './Sider.scss';
 
 const Sider: FC = () => {
     const [buttonState, setButtonState] = useState(
         [...Array(navItem.length)].map((x, i) => {
             if (i === 0) {
-                return true
+                return true;
             }
-            return false
+            return false;
         })
     );
 

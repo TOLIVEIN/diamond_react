@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import Search from "../Search/Search";
-import "./Header.less";
+import React, { FC } from 'react';
+import Search from '../Search/Search';
+import './Header.scss';
 
 const Header: FC = () => {
     return (
@@ -8,7 +8,7 @@ const Header: FC = () => {
             <cite className="app-title">S · C · Q</cite>
             <br></br>
             <div className="description-container">
-            <span className="description">A Chinese Poetry Web Page.</span>
+                <span className="description">A Chinese Poetry Web Page.</span>
             </div>
             <Search></Search>
         </div>
