@@ -1,20 +1,20 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 // import { AiOutlineInfoCircle } from "react-icons/all";
-import shortid from "shortid";
-import { exchangeSC } from "../../config/utils";
-import { PoetryDetail } from "../../model/data";
-import Detail from "../Detail/Detail";
-import "./Card.less";
+import shortid from 'shortid';
+import { exchangeSC } from '../../config/utils';
+import { PoetryDetail } from '../../model/data';
+import Detail from '../Detail/Detail';
+import './Card.less';
 
 const Card: FC<{
     id: string;
     passRef?: any;
     head: string[];
-    body: string[] | string | undefined;
+    body: string[] | undefined;
     notes?: string[];
     author?: string;
     foot?: string;
-}> = (props: any) => {
+}> = (props) => {
     const [visible, setVisible] = useState(false);
 
     const initialDetail: PoetryDetail = {
@@ -80,9 +80,7 @@ const Card: FC<{
                 ></Detail>
                 {props.head.length !== 0 ? (
                     <div className="card-head">
-                        <blockquote className="title">
-                            {props.head[0]}
-                        </blockquote>
+                        <blockquote className="title">{props.head[0]}</blockquote>
                         <blockquote className="author">
                             {props.author ? (
                                 <button
@@ -101,15 +99,7 @@ const Card: FC<{
                     </div>
                 ) : null}
 
-                <div className="card-body">
-                    {props.body instanceof Array ? (
-                        props.body.map((b: any, i: number) => (
-                            <blockquote key={i}>{b}</blockquote>
-                        ))
-                    ) : (
-                        <blockquote>{props.body}</blockquote>
-                    )}
-                </div>
+                <div className="card-body">{props.body instanceof Array ? props.body.map((b: any, i: number) => <blockquote key={i}>{b}</blockquote>) : <blockquote>{props.body}</blockquote>}</div>
 
                 {props.foot ? (
                     <div className="card-footer">
