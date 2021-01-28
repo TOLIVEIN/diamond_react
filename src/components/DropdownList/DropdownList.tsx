@@ -1,10 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Subject } from "rxjs";
-import "./DropdownList.scss";
+import { Subject } from 'rxjs';
+import './DropdownList.scss';
 
-const DropdownList: FC<{ items: string[] , className?: string}> = (props) => {
-    const [type, setType] = useState("作者");
+const DropdownList: FC<{ items: string[]; className?: string }> = (props) => {
+    const [type, setType] = useState('作者');
 
     return (
         <div className="drop-container">
