@@ -2,7 +2,7 @@ import React, { cloneElement, FC, MouseEventHandler, ReactElement, useState } fr
 import { createPortal } from "react-dom";
 import { AiOutlineCloseCircle, AiOutlineSwitcher } from "react-icons/all";
 import { PoetryDetail } from "../../model/data";
-import "./Detail.scss";
+import "./Detail.less";
 
 const Detail: FC<{
     visible: boolean;

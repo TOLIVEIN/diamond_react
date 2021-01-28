@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "./Footer.scss";
+import "./Footer.less";
 
 const Footer: FC<{ ref?: any; visible: boolean }> = (props) => {
     return (

@@ -4,7 +4,7 @@ import shortid from "shortid";
 import { exchangeSC } from "../../config/utils";
 import { PoetryDetail } from "../../model/data";
 import Detail from "../Detail/Detail";
-import "./Card.scss";
+import "./Card.less";
 
 const Card: FC<{
     id: string;

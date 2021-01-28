@@ -5,7 +5,7 @@ import { exchangeSC, exchangeTC } from "../../config/utils";
 import { searchData$ } from "../Search/Search";
 import { category$ } from "../Sider/Sider";
 import SlidingWindowScroll from "../SlidingWindowScroll/SlidingWindowScroll";
-import "./Main.scss";
+import "./Main.less";
 
 const Main: FC<{ setVisible?: any; initial?: number }> = (props) => {
     const [data, setData] = useState<any>([]);

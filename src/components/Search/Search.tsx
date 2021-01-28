@@ -3,7 +3,7 @@ import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { searchItem } from "../../config/property";
 import DropdownList, { searchType$ } from "../DropdownList/DropdownList";
-import "./Search.scss";
+import "./Search.less";
 
 const Search: FC<{ type?: string }> = (props) => {
     const items: string[] = Object.values(searchItem);

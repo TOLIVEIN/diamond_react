@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { Subject } from "rxjs";
 import { navItem } from "../../config/property";
-import "./Sider.scss";
+import "./Sider.less";
 
 const Sider: FC = () => {
     const [buttonState, setButtonState] = useState(

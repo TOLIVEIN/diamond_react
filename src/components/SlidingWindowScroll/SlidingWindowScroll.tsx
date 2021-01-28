@@ -3,7 +3,7 @@ import React, { FC, useContext, useEffect, useRef } from "react";
 import { VisibleContext } from "../../App";
 import { Poetry } from "../../model/data";
 import Card from "../Card/Card";
-import "./SlidingWindowScroll.scss";
+import "./SlidingWindowScroll.less";
 
 const SlidingWindowScroll: FC<{
     data: any;

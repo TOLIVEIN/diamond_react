@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Subject } from "rxjs";
-import "./DropdownList.scss";
+import "./DropdownList.less";
 
 const DropdownList: FC<{ items: string[] , className?: string}> = (props) => {
     const [type, setType] = useState("作者");
